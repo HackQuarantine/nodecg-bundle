@@ -1,0 +1,31 @@
+{
+  "name": "hackproductions-nodecg-bundle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+
+  "nodecg": {
+    "compatibleRange": ">=0.9",
+    "graphics": [
+      {
+        "file": "team-lower-thirds.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "dashboardPanels": [
+      {
+        "name": "team-lower-thirds",
+        "title": "Team Lower Thirds",
+        "width": 3,
+        "file": "team-lower-thirds.html",
+        "headerColor": "#9f9bbd"
+      }
+    ]
+  }
+}
