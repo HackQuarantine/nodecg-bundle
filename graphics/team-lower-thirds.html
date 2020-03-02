@@ -5,6 +5,11 @@
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700);
 		@import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+
+		@font-face {
+			font-family: "CustomFont";
+			src: url("http://htbvi.hack.productions/static/fonts/big-noodle-too.ttf");
+		}
 		body {
 		  background: lavender;
 		  font-size: 1rem;
@@ -27,31 +32,39 @@
 		  width: 20%;
 		  right: -50%;
 		  top: 65%;
-		  background: white;
+		  background: black;
 		  padding: 2% 25% 2% 2%;
 		  overflow: hidden;
-		  border-top: 8px solid #aaaaaa;
-		  border-bottom: 8px solid #828282;
-		  border-left: 8px solid #969696;
+		  border-top: 8px solid #CB0101;
+		  border-bottom: 8px solid #CB0101;
+		  border-left: 8px solid #CB0101;
 		  transition: width 3s;
 		  transition-duration: .5s;
 		  transition-timing-function: cubic-bezier(0.5, -0.5, 0.5, 1.5);
 		}
 
 		#headline {
+		  font-family: "CustomFont";
 		  text-transform: uppercase;
 		  font-weight: 700;
-		  background: white;
-		  margin-top: 0px;
+		  font-size: 60px;
+		  background: black;
+		  margin-top: -25px;
 		  margin-bottom: 0px;
+		  margin-left: 10px;
+		  color: white;
 		}
 
 		#byline {
+		  font-family: "CustomFont";
 		  text-transform: uppercase;
 		  font-weight: 400;
-		  background: white;
+		  background: black;
+		  font-size: 40px;
 		  margin-top: 0px;
 		  margin-bottom: 0px;
+		  margin-left: 10px;
+		  color: white;
 		}
 
 		@media screen and (max-width 420px) {
@@ -104,7 +117,7 @@
 	  }
 	// We can access Replicants from other bundles by specifying the bundle name as a second parameter.
 	// NodeCG requires that bundle names match their directory names, but you can always check the `package.json` to double check.
-	const currentTeamReplicant = nodecg.Replicant('teamName', '0_dashboards');
+	const currentTeamReplicant = nodecg.Replicant('teamName', 'hackproductions-nodecg-bundle');
 
 	// Change will be called when the Replicant loads too, so we can use it to set the initial value.
 	currentTeamReplicant.on('change', (newValue, oldValue) => {	  

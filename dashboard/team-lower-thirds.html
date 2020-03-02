@@ -18,13 +18,6 @@
 
 	const nameReplicant = nodecg.Replicant('teamName');
 
-	nameReplicant.on('change', (newValue, oldValue) => {
-		// The value of the Replicant has changed somewhere in NodeCG,
-		// this could be another dashboard panel, a server initiated change,
-		// or the doing of another user accessing your dashboard panel.
-		nameInput.value = newValue.text;
-	});
-
 	submitButton.onclick = () => {
 		// A Replicant can be modified by modifying its `value`.
 		nameReplicant.value = {'title': 'Current Team', 'text': nameInput.value};
