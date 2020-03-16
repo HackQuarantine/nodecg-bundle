@@ -117,24 +117,30 @@
 	  }
 	// We can access Replicants from other bundles by specifying the bundle name as a second parameter.
 	// NodeCG requires that bundle names match their directory names, but you can always check the `package.json` to double check.
-	const currentTeamReplicant = nodecg.Replicant('teamName', 'hackproductions-nodecg-bundle');
+	if (typeof nodecg !== 'undefined') {
+		const currentTeamReplicant = nodecg.Replicant('teamName', 'hackproductions-nodecg-bundle');
 
-	// Change will be called when the Replicant loads too, so we can use it to set the initial value.
-	currentTeamReplicant.on('change', (newValue, oldValue) => {	  
-		  ////////////////
-		  //Run Keyframes:
-		  // -- 00
-		  revealBreakingNews(newValue.title, newValue.text);
-		  // // -- 01
-		  // widen_lower_third();
-		  // // -- 02
-		  // revealHeadline();
-		  // // -- 03
-		  // revealByline();
+		// Change will be called when the Replicant loads too, so we can use it to set the initial value.
+		currentTeamReplicant.on('change', (newValue, oldValue) => {	  
+			  ////////////////
+			  //Run Keyframes:
+			  // -- 00
+			  revealBreakingNews(newValue.title, newValue.text);
+			  // // -- 01
+			  // widen_lower_third();
+			  // // -- 02
+			  // revealHeadline();
+			  // // -- 03
+			  // revealByline();
 
-		  hide_lower_third();
-		  ////////////////
-	});
+			  hide_lower_third();
+			  ////////////////
+		});
+	} else {
+		revealBreakingNews("This is the title", "This is the subtitle");
+
+		hide_lower_third();
+	}
 
 </script>
 </html>
