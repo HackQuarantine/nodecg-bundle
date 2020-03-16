@@ -1,0 +1,96 @@
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    overflow: hidden;
+}
+
+body { 
+    background: #000; 
+}
+
+main {
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -64;
+}
+
+p {
+    line-height: 1;
+}
+
+span {
+    display: block;
+    width: 2vmax; 
+    height: 2vmax; 
+    font-size: 2vmax; 
+    color: #9bff9b11;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.hero {
+    font-family: "Source Code Pro", serif;
+    text-align: center;
+    height: calc(100vh - 2em);
+}
+
+.hero::before {
+    width: 100%;
+    height: calc(100vh - 2em);
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: " ";
+    z-index: -1;
+    background: 
+    linear-gradient(
+    rgba(14, 20, 40, 0.85), 
+    rgba(14, 20, 40, 0.85)
+    );
+    /* bottom, image */
+}
+
+.hero .tagline {
+    color: #EBC805;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.hero .headline-date {
+    color: #EBC805;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.hero .powered-by {
+    color: white;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.hero .powered-by img {
+    height: 2em;
+}
+
+.hero .logo {
+    width: 100%;
+    padding: 8px;
+}
+
+.checkered {
+    background-color: black;
+    background-image: linear-gradient(45deg, #EBC805 25%, transparent 25%), linear-gradient(-45deg, #EBC805 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #EBC805 75%), linear-gradient(-45deg, transparent 75%, #EBC805 75%);
+    background-size: 1em 1em;
+    background-position: 0 0, 0 0.5em, 0.5em -0.5em, -0.5em 0px;  
+}
+
+.line {
+    width: 100vw;
+    height: 2em;
+}
