@@ -26,10 +26,9 @@
     <br />
 
     <label>Text:</label>
-    <input id="text_icon" type="text"></input>
+    <input id="text_image" type="text"></input>
     <input id="text_contents" type="text"></input>
     <button id="text_submit">Submit</button>
-
 </body>
 
 <script>
@@ -67,26 +66,40 @@
         document.getElementById("up_nexts").appendChild(node);
     });
 
-//
-// OLD CODE
-//
+    // ***************
+    // * SUBMIT CODE *
+    // ***************
 
-    const nameInput = document.querySelector('#nameInput');
-    const submitButton = document.querySelector('#submitButton');
+    const on_now_replicant = nodecg.Replicant("on_now");
+    const up_next_replicant = nodecg.Replicant("up_next");
+    const stats_replicant = nodecg.Replicant("stats");
 
-    const nameReplicant = nodecg.Replicant('teamName');
+    document.getElementById("on_now_submit").onclick = () => {
+        on_now_replicant.value = {
+            'name': document.getElementById("on_now_name").value,
+            'person': document.getElementById("on_now_person").value,
+            'time': document.getElementById("on_now_time").value
+        };
+    }
 
-    submitButton.onclick = () => {
-        // A Replicant can be modified by modifying its `value`.
-        nameReplicant.value = {'title': 'Current Team', 'text': nameInput.value};
-    };
+    document.getElementById("up_next_submit").onclick = () => {
+        events = [];
+        elements = document.getElementById("up_nexts").getElementsByClassName("up_next");
+        for (var i = 0; i < elements.length; i++) {
+            e = {};
+            e.name = elements[i].getElementsByClassName("up_next_name")[0].value;
+            e.person = elements[i].getElementsByClassName("up_next_person")[0].value;
+            e.time = elements[i].getElementsByClassName("up_next_time")[0].value;
+            events.push(e);
+        }
+        up_next_replicant.value = events;
+    }
 
-    const nameInput2 = document.querySelector('#nameInput2');
-    const submitButton2 = document.querySelector('#submitButton2');
-
-    submitButton2.onclick = () => {
-        // A Replicant can be modified by modifying its `value`.
-        nameReplicant.value = {'title': 'Next Team', 'text': nameInput2.value};;
-    };
+    document.getElementById("text_submit").onclick = () => {
+        stats_replicant.value = {
+            'image': document.getElementById("text_image").value,
+            'text': document.getElementById("text_contents").value
+        }
+    }
 </script>
 </html>

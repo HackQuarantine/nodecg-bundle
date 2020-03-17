@@ -1,7 +1,10 @@
 function on_now(event_details) {
-    event_name = event_details[0];
-    person = event_details[1];
-    time = event_details[2];
+    //event_name = event_details[0];
+    //person = event_details[1];
+    //time = event_details[2];
+    event_name = event_details.name;
+    person = event_details.person;
+    time = event_details.time;
 
     box = document.getElementById("on_now").getElementsByClassName("box")[0];
     box.classList.add("animated");
@@ -38,9 +41,9 @@ function up_next(events) {
         }
         for (var i = 0; i < events.length; i++) {
             event_details = events[i];
-            event_name = event_details[0];
-            person = event_details[1];
-            time = event_details[2];
+            event_name = event_details.name;
+            person = event_details.person;
+            time = event_details.time;
             box = sprintf(box_html, event_name, person, time);
             document.getElementById("up_next").innerHTML += box;
         }

@@ -16,6 +16,11 @@
         "file": "team-lower-thirds.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "decorations.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "dashboardPanels": [
@@ -24,6 +29,13 @@
         "title": "Team Lower Thirds",
         "width": 3,
         "file": "team-lower-thirds.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "decorations",
+        "title": "Stream Decoration",
+        "width": 7,
+        "file": "decorations.html",
         "headerColor": "#9f9bbd"
       }
     ]

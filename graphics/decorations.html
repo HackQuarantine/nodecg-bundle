@@ -98,14 +98,43 @@
 
 <script>
     initialize_countdown("2020-04-12T12:00:00+0000");
-    on_now(["Introduction to Android Development (Java)", "Will Russell", "Mar 28 17:00"]);
-    up_next([
-        ["Music with a HTML5-based Modular Synth", "Daniel Spencer", "Mar 31 17:00"],
-        ["Introduction to Git and GitHub", "Will Russell", "Mar 31 21:00"],
-    ]);
-    
-    stats_image("assets/logo.png");
-    animTo(document.getElementById("stats_text"), "Default stats text box contains some default text for testing purposes.")
+
+    if (typeof nodecg !== 'undefined') {
+        const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
+        const up_next_replicant = nodecg.Replicant('up_next', 'hackproductions-nodecg-bundle');
+        const stats_replicant = nodecg.Replicant('stats', 'hackproductions-nodecg-bundle');
+
+        on_now_replicant.on('change', (newValue, oldValue) => {
+            if (newValue.name !== undefined) {
+                on_now(newValue);
+            }
+        });
+
+        up_next_replicant.on('change', (newValue, oldValue) => {
+            if (newValue[0].name !== undefined) {
+                up_next(newValue);
+            }
+        });
+
+        stats_replicant.on('change', (newValue, oldValue) => {
+            if (newValue.image !== undefined) {
+                stats_image(newValue.image);
+                animTo(document.getElementById("stats_text"), newValue.text);
+            }
+        });
+
+        //stats_image("assets/logo.png");
+        //animTo(document.getElementById("stats_text"), "Default stats text box contains some default text for testing purposes.")
+    } else {
+        on_now(["Introduction to Android Development (Java)", "Will Russell", "Mar 28 17:00"]);
+        up_next([
+            ["Music with a HTML5-based Modular Synth", "Daniel Spencer", "Mar 31 17:00"],
+            ["Introduction to Git and GitHub", "Will Russell", "Mar 31 21:00"],
+        ]);
+        
+        stats_image("assets/logo.png");
+        animTo(document.getElementById("stats_text"), "Default stats text box contains some default text for testing purposes.")
+    }
 </script>
 
 </html>
