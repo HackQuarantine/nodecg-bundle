@@ -1,0 +1,126 @@
+body {
+    background: lavender;
+    font-family: "Source Code Pro", serif;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12%;
+    height: calc(100% - 12%);
+    background-color: #0e1428;
+    color: white;
+}
+
+#bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 12%);
+    height: 12%;
+    background-color: #0e1428;
+    color: white;
+}
+
+#bottom_left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 12%;
+    height: 12%;
+    background-color: #0e1428;
+}
+
+.logo {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.clock {
+    font-size: 6.5vh;
+    padding-top: 1.6vh;
+}
+
+.divider {
+    background-color: black;
+    background-image: linear-gradient(45deg, #EBC805 25%, transparent 25%), linear-gradient(-45deg, #EBC805 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #EBC805 75%), linear-gradient(-45deg, transparent 75%, #EBC805 75%);
+    background-size: 1em 1em;
+    background-position: 0 0, 0 0.5em, 0.5em -0.5em, -0.5em 0px;  
+
+    height: 0.5em;
+    width: 100%;
+}
+
+#on_now {
+    min-height: 9em;
+}
+
+#on_now, #up_next {
+    padding: 0.3em;
+}
+
+#on_now .title, #up_next .title {
+    font-size: 2em;
+}
+
+.box {
+    background-color: gray;
+    margin-top: 0.3em;
+    padding: 0.3em;
+}
+
+.box_lower {
+    position: relative;
+    width: 100%;
+    height: 0.8em;
+}
+
+.box_lower .time {
+    position: absolute;
+    right: 0;
+    font-size: 0.6em;
+}
+
+.box_lower .person {
+    position: absolute;
+    left: 0;
+    font-size: 0.6em;
+}
+
+#stats_image {
+    position: absolute;
+    bottom: 0;
+    right: 40%;
+    height: calc(100% - 1em);
+    width: 10%;
+    margin: 0.5em;
+    display: flex;
+}
+
+#stats_image img {
+    max-height: 100%;
+    max-width: 100%;
+    align-self: center;
+}
+
+#stats_box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: calc(100% - 2em);
+    width: calc(40% - 1.5em);
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+#stats_text {
+    font-size: 1.5em;
+}

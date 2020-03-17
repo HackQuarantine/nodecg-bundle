@@ -1,0 +1,108 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/decorations.css">
+    <script src="assets/clock.js"></script>
+    <script src="assets/mutate.js"></script>
+    <script src="assets/animate.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="left">
+        <div id="on_now">
+            <div class="title">On Now</div>
+            <div class="box hidden"></div>
+            <!--<div class="box">
+                <div class="name">
+                    Introduction to Android Development (Java)
+                </div>
+                <div class="box_lower">
+                    <div class="person">
+                        <i class="far fa-user"></i>
+                        <span>Will Russell</span>
+                    </div>
+                    <div class="time">
+                        <i class="far fa-clock"></i>
+                        <span>Mar 28 17:00</span>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="divider"></div>
+        <div id="up_next">
+            <div class="title">Up next</div>
+            <!--<div class="box">
+                <div class="name">
+                    Music with a HTML5-based Modular Synth
+                </div>
+                <div class="box_lower">
+                    <div class="person">
+                        <i class="far fa-user"></i>
+                        Daniel Spencer
+                    </div>
+                    <div class="time">
+                        <i class="far fa-clock"></i>
+                        Mar 31 17:00
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="name">
+                    Introduction to Git and GitHub
+                </div>
+                <div class="box_lower">
+                    <div class="person">
+                        <i class="far fa-user"></i>
+                        Will Russell
+                    </div>
+                    <div class="time">
+                        <i class="far fa-clock"></i>
+                        Mar 31 21:00
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div id="bottom_left">
+        <img class="logo" src="assets/logo_small.png">
+    </div>
+    <div id="bottom">
+        <div class="clock">
+            <span id="clock-d">21</span> DAYS, <span id="clock-h">12</span>:<span id="clock-m">30</span>:<span id="clock-s">50</span>
+        </div>
+        <div id="stats_image" class="hidden">
+            <img src="assets/logo.png">
+        </div>
+        <div id="stats_box">
+            <div id="stats_text">
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="top">
+        <div id="left">
+            On now, up next
+        </div>
+        <div id="right">
+        </div>
+    </div>
+    <div id="bottom">
+        Logo, time, news ticker
+    </div>-->
+</body>
+
+<script>
+    initialize_countdown("2020-04-12T12:00:00+0000");
+    on_now(["Introduction to Android Development (Java)", "Will Russell", "Mar 28 17:00"]);
+    up_next([
+        ["Music with a HTML5-based Modular Synth", "Daniel Spencer", "Mar 31 17:00"],
+        ["Introduction to Git and GitHub", "Will Russell", "Mar 31 21:00"],
+    ]);
+    
+    stats_image("assets/logo.png");
+    animTo(document.getElementById("stats_text"), "Default stats text box contains some default text for testing purposes.")
+</script>
+
+</html>
