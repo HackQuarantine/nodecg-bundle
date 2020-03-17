@@ -24,6 +24,7 @@
 	class Char {
 	  constructor() {
 	    this.element = document.createElement('span');
+            this.element.classList.add("matrix");
 	    this.mutate();
 	  }
 	  mutate() {

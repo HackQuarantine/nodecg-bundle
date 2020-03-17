@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/holding-view.css">
+    <script src="assets/clock.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/holding-view.css">
 </head>
 
 <body>
@@ -21,6 +23,9 @@
                     <div class="powered-by">Powered by <a title="hack.athon.uk" href="https://hack.athon.uk"><img src="assets/powered_by.svg" /></a></div>
                     <div class="headline-date">March 23rd to April 12th</div>
                     <div class="tagline">A global, virtual hackathon</div>
+                    <div class="clock">
+                        <span id="clock-d">21</span> DAYS, <span id="clock-h">12</span>:<span id="clock-m">30</span>:<span id="clock-s">50</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,4 +37,8 @@
 </body>
 
 <script src="assets/holding-view.js"></script>
+<script>
+    initialize_countdown("2020-04-12T12:00:00+0000");
+</script>
+
 </html>

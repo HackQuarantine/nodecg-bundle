@@ -24,7 +24,7 @@ p {
     line-height: 1;
 }
 
-span {
+.matrix {
     display: block;
     width: 2vmax; 
     height: 2vmax; 
@@ -81,6 +81,11 @@ span {
 .hero .logo {
     width: 100%;
     padding: 8px;
+}
+
+.clock {
+    font-size: 2em;
+    color: white;
 }
 
 .checkered {
