@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <label>On now:</label>
+    <input id="on_now_name" type="text"></input>
+    <input id="on_now_person" type="text"></input>
+    <input id="on_now_time" type="text"></input>
+    <button id="on_now_submit">Submit</button>
+
+    <br/>
+
+    <label>Up next:</label>
+    <div id="up_nexts">
+        <div class="up_next">
+            <input class="up_next_name" type="text"></input>
+            <input class="up_next_person" type="text"></input>
+            <input class="up_next_time" type="text"></input>
+            <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
+            <button class="up_next_up" onclick="moveUp(this);">Up</input>
+            <button class="up_next_down" onclick="moveDown(this);">Down</input>
+        </div>
+    </div>
+    <button id="up_next_add">Add Row</button>
+    <button id="up_next_submit">Submit</button>
+
+    <br />
+
+    <label>Text:</label>
+    <input id="text_icon" type="text"></input>
+    <input id="text_contents" type="text"></input>
+    <button id="text_submit">Submit</button>
+
+</body>
+
+<script>
+    const row_html = `
+        <input class="up_next_name" type="text"></input>
+        <input class="up_next_person" type="text"></input>
+        <input class="up_next_time" type="text"></input>
+        <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
+        <button class="up_next_up" onclick="moveUp(this);">Up</input>
+        <button class="up_next_down" onclick="moveDown(this);">Down</input>`
+
+    function removeRow(button) {
+        button.parentNode.remove();
+    }
+
+    function moveUp(button) {
+        element = button.parentNode;
+        if(element.previousElementSibling) {
+            element.parentNode.insertBefore(element, element.previousElementSibling);
+        }
+    }
+
+    function moveDown(button) {
+        element = button.parentNode;
+        if(element.nextElementSibling) {
+            element.parentNode.insertBefore(element.nextElementSibling, element);
+        }
+    }
+
+    const add_row = document.getElementById("up_next_add");
+    add_row.addEventListener("click", function() {
+        var node = document.createElement("div");
+        node.classList.add("up_next");
+        node.innerHTML = row_html;
+        document.getElementById("up_nexts").appendChild(node);
+    });
+
+//
+// OLD CODE
+//
+
+    const nameInput = document.querySelector('#nameInput');
+    const submitButton = document.querySelector('#submitButton');
+
+    const nameReplicant = nodecg.Replicant('teamName');
+
+    submitButton.onclick = () => {
+        // A Replicant can be modified by modifying its `value`.
+        nameReplicant.value = {'title': 'Current Team', 'text': nameInput.value};
+    };
+
+    const nameInput2 = document.querySelector('#nameInput2');
+    const submitButton2 = document.querySelector('#submitButton2');
+
+    submitButton2.onclick = () => {
+        // A Replicant can be modified by modifying its `value`.
+        nameReplicant.value = {'title': 'Next Team', 'text': nameInput2.value};;
+    };
+</script>
+</html>
