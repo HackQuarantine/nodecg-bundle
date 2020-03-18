@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <label>Countdown, end time:</label>
+    <br />
+    <input type="checkbox" id="countdown_active" name="countdown_active">
+    <label for="countdown_active"> Countdown Active (holding view only)</label>
+    <br />
+    <input id="countdown_date" type="date"></input>
+    <input id="countdown_time" type="time"></input>
+    <button id="countdown_submit">Submit</button>
+</body>
+
+<script>
+    const countdown_replicant = nodecg.Replicant("countdown");
+
+    document.getElementById("countdown_submit").onclick = () => {
+        countdown_replicant.value = {
+            'active': document.getElementById("countdown_active").checked,
+            'date': document.getElementById("countdown_date").value,
+            'time': document.getElementById("countdown_time").value
+        };
+    }
+</script>
+</html>

@@ -79,6 +79,18 @@ function stats_image(image) {
     }.bind(this, elem, image), 1000);
 }
 
+function clock(do_show) {
+    elem = document.getElementsByClassName("clock")[0];
+    if (!do_show) {
+        elem.classList.remove("fadeIn");
+        elem.classList.add("fadeOut");
+    } else {
+        elem.classList.add("fadeIn");
+        elem.classList.remove("transparent");
+        elem.classList.remove("fadeOut");
+    }
+}
+
 var box_html = `
 <div>
 <div class="box hidden">

@@ -1,17 +1,18 @@
-function initialize_countdown(endtime) {
+var countdown_endtime = null;
+
+function initialize_countdown() {
     var days = document.getElementById("clock-d")
     var hours = document.getElementById("clock-h")
     var minutes = document.getElementById("clock-m")
     var seconds = document.getElementById("clock-s")
 
     function do_countdown() {
-        var t = get_time_remaining(endtime);
-        days.innerHTML = ('0' + t.days).slice(-2);
-        hours.innerHTML = ('0' + t.hours).slice(-2);
-        minutes.innerHTML = ('0' + t.minutes).slice(-2);
-        seconds.innerHTML = ('0' + t.seconds).slice(-2);
-        if (t.total <= 0) {
-            clearInterval(timeinterval);
+        if (countdown_endtime !== null) {
+            var t = get_time_remaining(countdown_endtime);
+            days.innerHTML = ('0' + t.days).slice(-2);
+            hours.innerHTML = ('0' + t.hours).slice(-2);
+            minutes.innerHTML = ('0' + t.minutes).slice(-2);
+            seconds.innerHTML = ('0' + t.seconds).slice(-2);
         }
     }
 

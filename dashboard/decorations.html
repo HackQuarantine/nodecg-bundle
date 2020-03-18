@@ -2,19 +2,21 @@
 <html>
 <body>
     <label>On now:</label>
-    <input id="on_now_name" type="text"></input>
-    <input id="on_now_person" type="text"></input>
-    <input id="on_now_time" type="text"></input>
+    <br />
+    <input id="on_now_name" type="text" placeholder="Event Name"></input>
+    <input id="on_now_person" type="text" placeholder="Person"></input>
+    <input id="on_now_time" type="text" placeholder="Jan 00 00:00"></input>
     <button id="on_now_submit">Submit</button>
 
+    <br/>
     <br/>
 
     <label>Up next:</label>
     <div id="up_nexts">
         <div class="up_next">
-            <input class="up_next_name" type="text"></input>
-            <input class="up_next_person" type="text"></input>
-            <input class="up_next_time" type="text"></input>
+            <input class="up_next_name" type="text" placeholder="Event Name"></input>
+            <input class="up_next_person" type="text" placeholder="Person"></input>
+            <input class="up_next_time" type="text" placeholder="Jan 00 00:00"></input>
             <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
             <button class="up_next_up" onclick="moveUp(this);">Up</input>
             <button class="up_next_down" onclick="moveDown(this);">Down</input>
@@ -24,18 +26,22 @@
     <button id="up_next_submit">Submit</button>
 
     <br />
+    <br />
 
     <label>Text:</label>
-    <input id="text_image" type="text"></input>
-    <input id="text_contents" type="text"></input>
+    <br />
+    <input id="text_image" type="text" placeholder="Image URL"></input>
+    <br />
+    <textarea id="text_contents" placeholder="Text"></textarea>
+    <br />
     <button id="text_submit">Submit</button>
 </body>
 
 <script>
     const row_html = `
-        <input class="up_next_name" type="text"></input>
-        <input class="up_next_person" type="text"></input>
-        <input class="up_next_time" type="text"></input>
+        <input class="up_next_name" type="text" placeholder="Event Name"></input>
+        <input class="up_next_person" type="text" placeholder="Person"></input>
+        <input class="up_next_time" type="text" placeholder="Jan 00 00:00"></input>
         <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
         <button class="up_next_up" onclick="moveUp(this);">Up</input>
         <button class="up_next_down" onclick="moveDown(this);">Down</input>`

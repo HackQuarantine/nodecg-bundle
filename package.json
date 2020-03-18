@@ -42,6 +42,13 @@
         "width": 7,
         "file": "decorations.html",
         "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "countdown",
+        "title": "Countdown",
+        "width": 3,
+        "file": "countdown.html",
+        "headerColor": "#9f9bbd"
       }
     ]
   }

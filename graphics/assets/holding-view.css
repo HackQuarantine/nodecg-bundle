@@ -99,3 +99,7 @@ p {
     width: 100vw;
     height: 2em;
 }
+
+.transparent {
+    opacity: 0;
+}
