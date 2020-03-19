@@ -38,7 +38,7 @@
 
             // Change will be called when the Replicant loads too, so we can use it to set the initial value.
             popupReplicant.on('change', (newValue, oldValue) => {      
-                if (newValue.title !== undefined) {
+                if (typeof(newValue) === "object") {
                     reveal_popup(newValue.title, newValue.text, newValue.delay);
                 }
             });

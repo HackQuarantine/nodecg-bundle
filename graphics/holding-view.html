@@ -44,7 +44,7 @@
         const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
 
         countdown_replicant.on('change', (newValue, oldValue) => {
-            if (newValue.time !== undefined) {
+            if (typeof(newValue) === "object") {
                 countdown_endtime = newValue.date + "T" + newValue.time;
                 clock(newValue.active);
             }
