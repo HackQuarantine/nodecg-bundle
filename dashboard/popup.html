@@ -2,8 +2,12 @@
 <html>
 <body>
 	<input id="headline" type="text" placeholder="Title"></input>
-	<textarea id="contents" placeholder="Contents"></textarea>
+        <textarea id="contents" placeholder="Contents"></textarea>
+        <br />
 	<input id="delay" type="number" value=5000></input>
+        <input type="checkbox" id="lower" name="lower">
+        <label for="lower"> Lower Thirds</label>
+        <br />
 	<button id="submit_button">Submit</button>
 </body>
 
@@ -14,7 +18,8 @@
 		popupReplicant.value = {
                     'title': document.getElementById("headline").value,
                     'text': document.getElementById("contents").value,
-                    'delay': document.getElementById("delay").value
+                    'delay': document.getElementById("delay").value,
+                    'lower': document.getElementById("lower").checked
                 };
 	};
 </script>

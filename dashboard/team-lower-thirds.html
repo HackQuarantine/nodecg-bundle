@@ -16,19 +16,27 @@
 	const nameInput = document.querySelector('#nameInput');
 	const submitButton = document.querySelector('#submitButton');
 
-	const nameReplicant = nodecg.Replicant('teamName');
+	const popupReplicant = nodecg.Replicant('popup');
 
 	submitButton.onclick = () => {
-		// A Replicant can be modified by modifying its `value`.
-		nameReplicant.value = {'title': 'Current Team', 'text': nameInput.value};
+		popupReplicant.value = {
+                    'title': 'Current Team',
+                    'text': nameInput.value,
+                    'delay': 5000,
+                    'lower': true
+                };
 	};
 
 	const nameInput2 = document.querySelector('#nameInput2');
 	const submitButton2 = document.querySelector('#submitButton2');
 
 	submitButton2.onclick = () => {
-		// A Replicant can be modified by modifying its `value`.
-		nameReplicant.value = {'title': 'Next Team', 'text': nameInput2.value};;
+		popupReplicant.value = {
+                    'title': 'Next Team',
+                    'text': nameInput2.value,
+                    'delay': 5000,
+                    'lower': true
+                };
 	};
 </script>
 </html>

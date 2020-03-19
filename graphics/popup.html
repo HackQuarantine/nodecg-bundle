@@ -20,7 +20,14 @@
 </body>
 
 <script>
-    function reveal_popup(headline, contents, delay) {
+    function reveal_popup(headline, contents, delay, lower) {
+        if (lower) {
+            document.getElementById("popup").classList.add("lower");
+            setTimeout(function() {
+                document.getElementById("popup").classList.remove("lower");
+            }, Number(delay)+4000);
+        }
+
         document.getElementById("popup").classList.add("show");
         animToDur(document.getElementById("headline"), headline, 2000);
         animToDur(document.getElementById("contents"), contents, 2000);
@@ -40,7 +47,7 @@
             // Change will be called when the Replicant loads too, so we can use it to set the initial value.
             popupReplicant.on('change', (newValue, oldValue) => {      
                 if (typeof(newValue) === "object") {
-                    reveal_popup(newValue.title, newValue.text, newValue.delay);
+                    reveal_popup(newValue.title, newValue.text, newValue.delay, newValue.lower);
                 }
             });
         } else {
