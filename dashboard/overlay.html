@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
+</head>
 <body>
     <label>On now:</label>
     <br />
@@ -17,9 +20,9 @@
             <input class="up_next_name" type="text" placeholder="Event Name"></input>
             <input class="up_next_person" type="text" placeholder="Person"></input>
             <input class="up_next_time" type="text" placeholder="Jan 00 00:00"></input>
-            <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
-            <button class="up_next_up" onclick="moveUp(this);">Up</input>
-            <button class="up_next_down" onclick="moveDown(this);">Down</input>
+            <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
+            <button class="up_next_up" onclick="move_up(this);">Up</input>
+            <button class="up_next_down" onclick="move_down(this);">Down</input>
         </div>
     </div>
     <button id="up_next_add">Add Row</button>
@@ -28,48 +31,75 @@
     <br />
     <br />
 
-    <label>Text:</label>
-    <br />
+    <label>Messages:</label>
+    <div id="messages">
+        <div class="message">
+            <input class="message_image" type="text" placeholder="Image URL"></input>
+            <input class="message_text" type="text" placeholder="Message"></input>
+            <button class="message_remove" onclick="remove_row(this);">Remove Row</input>
+            <button class="message_up" onclick="move_up(this);">Up</input>
+            <button class="message_down" onclick="move_down(this);">Down</input>
+        </div>
+    </div>
+    <button id="message_add">Add Row</button>
+    <button id="message_submit">Submit</button>
+
+    <!--<br />
     <input id="text_image" type="text" placeholder="Image URL"></input>
     <br />
     <textarea id="text_contents" placeholder="Text"></textarea>
     <br />
-    <button id="text_submit">Submit</button>
+    <button id="text_submit">Submit</button>-->
 </body>
 
 <script>
-    const row_html = `
-        <input class="up_next_name" type="text" placeholder="Event Name"></input>
-        <input class="up_next_person" type="text" placeholder="Person"></input>
-        <input class="up_next_time" type="text" placeholder="Jan 00 00:00"></input>
-        <button class="up_next_remove" onclick="removeRow(this);">Remove Row</input>
-        <button class="up_next_up" onclick="moveUp(this);">Up</input>
-        <button class="up_next_down" onclick="moveDown(this);">Down</input>`
-
-    function removeRow(button) {
+    function remove_row(button) {
         button.parentNode.remove();
     }
 
-    function moveUp(button) {
+    function move_up(button) {
         element = button.parentNode;
         if(element.previousElementSibling) {
             element.parentNode.insertBefore(element, element.previousElementSibling);
         }
     }
 
-    function moveDown(button) {
+    function move_down(button) {
         element = button.parentNode;
         if(element.nextElementSibling) {
             element.parentNode.insertBefore(element.nextElementSibling, element);
         }
     }
 
+    const row_html = `
+        <input class="up_next_name" type="text" placeholder="Event Name" value="%s"></input>
+        <input class="up_next_person" type="text" placeholder="Person" value="%s"></input>
+        <input class="up_next_time" type="text" placeholder="Jan 00 00:00" value="%s"></input>
+        <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
+        <button class="up_next_up" onclick="move_up(this);">Up</input>
+        <button class="up_next_down" onclick="move_down(this);">Down</input>`
+
     const add_row = document.getElementById("up_next_add");
     add_row.addEventListener("click", function() {
         var node = document.createElement("div");
         node.classList.add("up_next");
-        node.innerHTML = row_html;
+        node.innerHTML = sprintf(row_html, "", "", "");
         document.getElementById("up_nexts").appendChild(node);
+    });
+
+    const message_row_html = `
+        <input class="message_image" type="text" placeholder="Image URL" value="%s"></input>
+        <input class="message_text" type="text" placeholder="Message" value="%s"></input>
+        <button class="message_remove" onclick="remove_row(this);">Remove Row</input>
+        <button class="message_up" onclick="move_up(this);">Up</input>
+        <button class="message_down" onclick="move_down(this);">Down</input>`
+
+    const message_add_row = document.getElementById("message_add");
+    message_add_row.addEventListener("click", function() {
+        var node = document.createElement("div");
+        node.classList.add("message");
+        node.innerHTML = sprintf(message_row_html, "", "");
+        document.getElementById("messages").appendChild(node);
     });
 
     // ***************
@@ -78,7 +108,7 @@
 
     const on_now_replicant = nodecg.Replicant("on_now");
     const up_next_replicant = nodecg.Replicant("up_next");
-    const stats_replicant = nodecg.Replicant("stats");
+    const messages_replicant = nodecg.Replicant("messages");
 
     document.getElementById("on_now_submit").onclick = () => {
         on_now_replicant.value = {
@@ -101,11 +131,63 @@
         up_next_replicant.value = events;
     }
 
-    document.getElementById("text_submit").onclick = () => {
-        stats_replicant.value = {
-            'image': document.getElementById("text_image").value,
-            'text': document.getElementById("text_contents").value
+    document.getElementById("message_submit").onclick = () => {
+        messages = [];
+        elements = document.getElementById("messages").getElementsByClassName("message");
+        for (var i = 0; i < elements.length; i++) {
+            m = {};
+            m.image = elements[i].getElementsByClassName("message_image")[0].value;
+            m.text = elements[i].getElementsByClassName("message_text")[0].value;
+            messages.push(m);
         }
+        messages_replicant.value = messages;
     }
+
+    // ***********************
+    // * REINSERT PARAMETERS *
+    // ***********************
+
+    on_now_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            document.getElementById("on_now_name").value = newValue.name;
+            document.getElementById("on_now_person").value = newValue.person;
+            document.getElementById("on_now_time").value = newValue.time;
+        }
+    });
+
+    up_next_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            up_nexts = document.getElementById("up_nexts").getElementsByClassName("up_next")
+            while (up_nexts.length > 0) {
+                up_nexts[0].remove();
+            }
+            for (var i = 0; i < newValue.length; i++) {
+                event_name = newValue[i].name;
+                person = newValue[i].person;
+                time = newValue[i].time;
+                var node = document.createElement("div");
+                node.classList.add("up_next");
+                node.innerHTML = sprintf(row_html, event_name, person, time);
+                document.getElementById("up_nexts").appendChild(node);
+            }
+        }
+    });
+
+    messages_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            messages = document.getElementById("messages").getElementsByClassName("message")
+            while (messages.length > 0) {
+                messages[0].remove();
+            }
+            for (var i = 0; i < newValue.length; i++) {
+                image = newValue[i].image;
+                text = newValue[i].text;
+                var node = document.createElement("div");
+                node.classList.add("message");
+                node.innerHTML = sprintf(message_row_html, image, text);
+                document.getElementById("messages").appendChild(node);
+            }
+        }
+    });
 </script>
 </html>

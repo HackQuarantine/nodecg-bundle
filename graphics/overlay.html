@@ -7,6 +7,7 @@
     <script src="assets/clock.js"></script>
     <script src="assets/mutate.js"></script>
     <script src="assets/animate.js"></script>
+    <script src="assets/cycle.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
@@ -101,7 +102,7 @@
     if (typeof nodecg !== 'undefined') {
         const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
         const up_next_replicant = nodecg.Replicant('up_next', 'hackproductions-nodecg-bundle');
-        const stats_replicant = nodecg.Replicant('stats', 'hackproductions-nodecg-bundle');
+        const messages_replicant = nodecg.Replicant('messages', 'hackproductions-nodecg-bundle');
         const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
 
         countdown_replicant.on('change', (newValue, oldValue) => {
@@ -117,20 +118,24 @@
         });
 
         up_next_replicant.on('change', (newValue, oldValue) => {
-            if (newValue[0].name !== undefined) {
+            if (typeof(newValue) === "object") {
                 up_next(newValue);
             }
         });
 
-        stats_replicant.on('change', (newValue, oldValue) => {
+        /*stats_replicant.on('change', (newValue, oldValue) => {
             if (newValue.image !== undefined) {
                 stats_image(newValue.image);
                 animTo(document.getElementById("stats_text"), newValue.text);
             }
-        });
+        });*/
 
-        //stats_image("assets/logo.png");
-        //animTo(document.getElementById("stats_text"), "Default stats text box contains some default text for testing purposes.")
+        messages_replicant.on('change', (newValue, oldValue) => {
+            if (typeof(newValue) === "object") {
+                cycle_elements = newValue;
+            }
+        });
+        cycle_start();
     } else {
         on_now(["Introduction to Android Development (Java)", "Will Russell", "Mar 28 17:00"]);
         up_next([

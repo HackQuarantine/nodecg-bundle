@@ -21,5 +21,13 @@
             'time': document.getElementById("countdown_time").value
         };
     }
+
+    countdown_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            document.getElementById("countdown_date").value = newValue.date;
+            document.getElementById("countdown_time").value = newValue.time;
+            document.getElementById("countdown_active").checked = newValue.active;
+        }
+    });
 </script>
 </html>
