@@ -44,12 +44,13 @@
     <button id="message_add">Add Row</button>
     <button id="message_submit">Submit</button>
 
-    <!--<br />
-    <input id="text_image" type="text" placeholder="Image URL"></input>
     <br />
-    <textarea id="text_contents" placeholder="Text"></textarea>
     <br />
-    <button id="text_submit">Submit</button>-->
+
+    <label>Sidebar:</label>
+    <input type="checkbox" id="sidebar_active" name="sidebar_active" checked>
+    <label for="sidebar_active"> Active</label>
+
 </body>
 
 <script>
@@ -109,6 +110,7 @@
     const on_now_replicant = nodecg.Replicant("on_now");
     const up_next_replicant = nodecg.Replicant("up_next");
     const messages_replicant = nodecg.Replicant("messages");
+    const sidebar_replicant = nodecg.Replicant("sidebar");
 
     document.getElementById("on_now_submit").onclick = () => {
         on_now_replicant.value = {
@@ -141,6 +143,10 @@
             messages.push(m);
         }
         messages_replicant.value = messages;
+    }
+
+    document.getElementById("sidebar_active").onclick = () => {
+        sidebar_replicant.value = document.getElementById("sidebar_active").checked;
     }
 
     // ***********************
@@ -187,6 +193,12 @@
                 node.innerHTML = sprintf(message_row_html, image, text);
                 document.getElementById("messages").appendChild(node);
             }
+        }
+    });
+
+    sidebar_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "boolean") {
+            document.getElementById("sidebar_active").checked = newValue;
         }
     });
 </script>
