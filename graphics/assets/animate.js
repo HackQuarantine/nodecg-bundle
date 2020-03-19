@@ -1,12 +1,16 @@
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+function format_date(date, time) {
+    return months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
+}
+
 function on_now(event_details) {
     event_name = event_details.name;
     person = event_details.person;
     date = event_details.date;
     time = event_details.time;
 
-    time_str = months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
+    time_str = format_date(date, time);
 
     box = document.getElementById("on_now").getElementsByClassName("box")[0];
     box.classList.add("animated");
@@ -48,7 +52,7 @@ function up_next(events) {
             date = event_details.date;
             time = event_details.time;
 
-            time_str = months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
+            time_str = format_date(date, time);
             box = sprintf(box_html, event_name, person, time_str);
             document.getElementById("up_next").innerHTML += box;
         }

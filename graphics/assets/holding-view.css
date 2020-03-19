@@ -109,3 +109,41 @@ p {
     font-size: 0.7em;
     height: 1em;
 }
+
+
+.clock-card {
+    font-size: 1.6em;
+    color: white;
+    text-transform: uppercase;
+}
+
+.box {
+    background-color: gray;
+    color: white;
+    padding: 1em;
+    font-size: 1.2em;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.box #event-name {
+    min-height: 1.5em;
+}
+
+.box_lower {
+    position: relative;
+    width: 100%;
+    height: 1em;
+    margin-top: 0.8em;
+}
+
+.box_lower .time {
+    position: absolute;
+    right: 0;
+}
+
+.box_lower .person {
+    position: absolute;
+    left: 0;
+}

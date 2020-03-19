@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="assets/clock.js"></script>
+    <script src="assets/animate.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/holding-view.css">
+</head>
+
+<body>
+    <div class="hero container d-flex">
+        <div class="align-self-center justify-content-center w-100">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <img class="logo" src="assets/logo.png" />
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="powered-by">Powered by <a title="hack.athon.uk" href="https://hack.athon.uk"><img src="assets/powered_by.svg" /></a></div>
+                    <div class="headline-date">March 23rd to April 12th</div>
+                    <div class="tagline">A global, virtual hackathon</div>
+                    <div class="box">
+                        <div class="clock-card">
+                            <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span>
+                        </div>
+                        <div id="event-name"></div>
+                        <div class="box_lower">
+                            <div class="person">
+                                <i class="far fa-user"></i>
+                                <span id="event-person"></span>
+                            </div>
+                            <div class="time">
+                                <i class="far fa-clock"></i>
+                                <span id="event-time"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkered line"></div>
+
+    <main></main>
+</body>
+
+<script src="assets/holding-view.js"></script>
+<script>
+    if (typeof nodecg !== 'undefined') {
+        const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
+
+        on_now_replicant.on('change', (newValue, oldValue) => {
+            if (typeof(newValue) === "object") {
+                countdown_endtime = newValue.date + "T" + newValue.time;
+                document.getElementById("event-name").innerHTML = newValue.name;
+                document.getElementById("event-person").innerHTML = newValue.person;
+                document.getElementById("event-time").innerHTML = format_date(newValue.date, newValue.time);
+            }
+        });
+    }
+    initialize_countdown();
+</script>
+
+</html>
