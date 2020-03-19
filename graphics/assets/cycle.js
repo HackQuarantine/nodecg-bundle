@@ -11,7 +11,7 @@
 var cycle_elements = [];
 
 var cycle_index = 0;
-var cycle_delay = 3000;
+var cycle_delay = 60*1000;
 
 function cycle_next() {
     if (cycle_elements.length > 0) {
