@@ -8,7 +8,8 @@
     <br />
     <input id="on_now_name" type="text" placeholder="Event Name"></input>
     <input id="on_now_person" type="text" placeholder="Person"></input>
-    <input id="on_now_time" type="text" placeholder="Jan 00 00:00"></input>
+    <input id="on_now_date" type="date"></input>
+    <input id="on_now_time" type="time"></input>
     <button id="on_now_submit">Submit</button>
 
     <br/>
@@ -19,7 +20,8 @@
         <div class="up_next">
             <input class="up_next_name" type="text" placeholder="Event Name"></input>
             <input class="up_next_person" type="text" placeholder="Person"></input>
-            <input class="up_next_time" type="text" placeholder="Jan 00 00:00"></input>
+            <input class="up_next_date" type="date"></input>
+            <input class="up_next_time" type="time"></input>
             <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
             <button class="up_next_up" onclick="move_up(this);">Up</input>
             <button class="up_next_down" onclick="move_down(this);">Down</input>
@@ -75,7 +77,8 @@
     const row_html = `
         <input class="up_next_name" type="text" placeholder="Event Name" value="%s"></input>
         <input class="up_next_person" type="text" placeholder="Person" value="%s"></input>
-        <input class="up_next_time" type="text" placeholder="Jan 00 00:00" value="%s"></input>
+        <input class="up_next_date" type="date" value="%s"></input>
+        <input class="up_next_time" type="time" value="%s"></input>
         <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
         <button class="up_next_up" onclick="move_up(this);">Up</input>
         <button class="up_next_down" onclick="move_down(this);">Down</input>`
@@ -84,7 +87,7 @@
     add_row.addEventListener("click", function() {
         var node = document.createElement("div");
         node.classList.add("up_next");
-        node.innerHTML = sprintf(row_html, "", "", "");
+        node.innerHTML = sprintf(row_html, "", "", "", "");
         document.getElementById("up_nexts").appendChild(node);
     });
 
@@ -116,6 +119,7 @@
         on_now_replicant.value = {
             'name': document.getElementById("on_now_name").value,
             'person': document.getElementById("on_now_person").value,
+            'date': document.getElementById("on_now_date").value,
             'time': document.getElementById("on_now_time").value
         };
     }
@@ -127,6 +131,7 @@
             e = {};
             e.name = elements[i].getElementsByClassName("up_next_name")[0].value;
             e.person = elements[i].getElementsByClassName("up_next_person")[0].value;
+            e.date = elements[i].getElementsByClassName("up_next_date")[0].value;
             e.time = elements[i].getElementsByClassName("up_next_time")[0].value;
             events.push(e);
         }
@@ -157,6 +162,7 @@
         if (typeof(newValue) === "object") {
             document.getElementById("on_now_name").value = newValue.name;
             document.getElementById("on_now_person").value = newValue.person;
+            document.getElementById("on_now_date").value = newValue.date;
             document.getElementById("on_now_time").value = newValue.time;
         }
     });
@@ -170,10 +176,11 @@
             for (var i = 0; i < newValue.length; i++) {
                 event_name = newValue[i].name;
                 person = newValue[i].person;
+                date = newValue[i].date;
                 time = newValue[i].time;
                 var node = document.createElement("div");
                 node.classList.add("up_next");
-                node.innerHTML = sprintf(row_html, event_name, person, time);
+                node.innerHTML = sprintf(row_html, event_name, person, date, time);
                 document.getElementById("up_nexts").appendChild(node);
             }
         }

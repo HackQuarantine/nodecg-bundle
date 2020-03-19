@@ -1,10 +1,12 @@
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 function on_now(event_details) {
-    //event_name = event_details[0];
-    //person = event_details[1];
-    //time = event_details[2];
     event_name = event_details.name;
     person = event_details.person;
+    date = event_details.date;
     time = event_details.time;
+
+    time_str = months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
 
     box = document.getElementById("on_now").getElementsByClassName("box")[0];
     box.classList.add("animated");
@@ -23,7 +25,7 @@ function on_now(event_details) {
             box.classList.remove("animated");
             box.classList.remove("fadeInLeft");
         }.bind(this, box), 1000);
-    }.bind(this, box, event_name, person, time), 1000);
+    }.bind(this, box, event_name, person, time_str), 1000);
 }
 
 var up_next_delay = 100;
@@ -43,8 +45,11 @@ function up_next(events) {
             event_details = events[i];
             event_name = event_details.name;
             person = event_details.person;
+            date = event_details.date;
             time = event_details.time;
-            box = sprintf(box_html, event_name, person, time);
+
+            time_str = months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
+            box = sprintf(box_html, event_name, person, time_str);
             document.getElementById("up_next").innerHTML += box;
         }
 
