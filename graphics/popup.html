@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="assets/popup.css">
+    <script src="assets/mutate.js"></script>
+</head>
+<body>
+    <div id="popup">
+        <div id="headline-box">
+            <h1 id="headline"></h1>
+        </div>
+        <div class="divider"></div>
+        <div id="contents-box">
+            <span id="contents"></span>
+        </div>
+    </div>
+</body>
+
+<script>
+    function reveal_popup(headline, contents, delay) {
+        document.getElementById("popup").classList.add("show");
+        animToDur(document.getElementById("headline"), headline, 2000);
+        animToDur(document.getElementById("contents"), contents, 2000);
+        setTimeout(function() { 
+            animToDur(document.getElementById("headline"), "", 2000);
+            animToDur(document.getElementById("contents"), "", 2000);
+            setTimeout(function() {
+                document.getElementById("popup").classList.remove("show");
+            }, 1000);
+        }, delay);
+    }
+
+    setTimeout(function() {
+        if (typeof nodecg !== 'undefined') {
+            const popupReplicant = nodecg.Replicant('popup', 'hackproductions-nodecg-bundle');
+
+            // Change will be called when the Replicant loads too, so we can use it to set the initial value.
+            popupReplicant.on('change', (newValue, oldValue) => {      
+                if (newValue.title !== undefined) {
+                    reveal_popup(newValue.title, newValue.text, newValue.delay);
+                }
+            });
+        } else {
+            reveal_popup("This is the title", "This is the subtitle", 7000);
+        }
+    }, 100);
+
+</script>
+</html>

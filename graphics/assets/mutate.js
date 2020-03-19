@@ -36,4 +36,13 @@ function animTo(element, target) {
     setTimeout(function(){setText(start, target, element, 1)}, animDur);
 }
 
+function animToDur(element, target, duration) {
+    start = element.innerText;
+    for (var i = 0; i < frames; i++) {
+        var p = i/frames;
+        setTimeout(setText.bind(this, start, target, element, p), p * duration);
+    }
+    setTimeout(function(){setText(start, target, element, 1)}, duration);
+}
+
 //setTimeout(function(){startAnim(true)},delay1);

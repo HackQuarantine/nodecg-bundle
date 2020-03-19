@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<input id="headline" type="text" placeholder="Title"></input>
+	<textarea id="contents" placeholder="Contents"></textarea>
+	<input id="delay" type="number" value=7000></input>
+	<button id="submit_button">Submit</button>
+</body>
+
+<script>
+	const popupReplicant = nodecg.Replicant('popup');
+
+	document.getElementById("submit_button").onclick = () => {
+		popupReplicant.value = {
+                    'title': document.getElementById("headline").value,
+                    'text': document.getElementById("contents").value,
+                    'delay': document.getElementById("delay").value
+                };
+	};
+</script>
+</html>

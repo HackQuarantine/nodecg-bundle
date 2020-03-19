@@ -26,6 +26,11 @@
         "file": "holding-view.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "popup.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "dashboardPanels": [
@@ -48,6 +53,13 @@
         "title": "Countdown",
         "width": 3,
         "file": "countdown.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "popup",
+        "title": "Popup",
+        "width": 3,
+        "file": "popup.html",
         "headerColor": "#9f9bbd"
       }
     ]
