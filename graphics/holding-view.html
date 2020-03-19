@@ -26,7 +26,9 @@
                     <div class="headline-date">March 23rd to April 12th</div>
                     <div class="tagline">A global, virtual hackathon</div>
                     <div class="clock transparent animated">
-                        <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span><span id="clock-text"></span>
+                        <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span>
+                        <br />
+                        <div id="clock-text"></div>
                     </div>
                 </div>
             </div>
@@ -47,8 +49,7 @@
             if (typeof(newValue) === "object") {
                 countdown_endtime = newValue.date + "T" + newValue.time;
                 clock(newValue.active);
-                text = newValue.text ? " " + newValue.text : "";
-                document.getElementById("clock-text").innerHTML = text;
+                document.getElementById("clock-text").innerHTML = newValue.text;
             }
         });
     }

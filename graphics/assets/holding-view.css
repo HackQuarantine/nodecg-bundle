@@ -86,6 +86,7 @@ p {
 .clock {
     font-size: 2em;
     color: white;
+    text-transform: uppercase;
 }
 
 .checkered {
@@ -102,4 +103,9 @@ p {
 
 .transparent {
     opacity: 0;
+}
+
+#clock-text {
+    font-size: 0.7em;
+    height: 1em;
 }
