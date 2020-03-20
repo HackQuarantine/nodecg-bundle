@@ -77,7 +77,8 @@ body {
 .box {
     background-color: gray;
     margin-top: 0.3em;
-    padding: 0.3em;
+    padding-left: 0.3em;
+    padding-bottom: 1em;
 }
 
 .box_lower {
@@ -87,14 +88,11 @@ body {
 }
 
 .box_lower .time {
-    position: absolute;
-    right: 0;
+
     font-size: 0.6em;
 }
 
 .box_lower .person {
-    position: absolute;
-    left: 0;
     font-size: 0.6em;
 }
 

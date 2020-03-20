@@ -8,6 +8,7 @@ body {
 #popup {
     overflow: hidden;
     position: absolute;
+    
     top: 30%;
     transition: left 0.6s cubic-bezier(.71,-0.3,.21,1.32);
     width: 40%;
