@@ -35,10 +35,10 @@
     ],
     "dashboardPanels": [
       {
-        "name": "countdown",
-        "title": "Countdown",
+        "name": "holding-view",
+        "title": "Holding View",
         "width": 3,
-        "file": "countdown.html",
+        "file": "holding-view.html",
         "headerColor": "#9f9bbd"
       },
       {
