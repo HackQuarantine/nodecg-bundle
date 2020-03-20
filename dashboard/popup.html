@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<input id="headline" type="text" placeholder="Title"></input>
-        <textarea id="contents" placeholder="Contents"></textarea>
-        <br />
-	<input id="delay" type="number" value=5000></input>
-        <input type="checkbox" id="lower" name="lower">
-        <label for="lower"> Lower Thirds</label>
-        <br />
+    <input id="headline" type="text" placeholder="Title"></input>
+    <input id="delay" type="number" value=5000></input>
+    <br />
+	<textarea id="contents" placeholder="Contents"></textarea>
+    <br/>
+    <br/>
+    <label for="lower">Lower Third</label>
+    <input type="checkbox" id="lower" name="lower">
+    <br />
 	<button id="submit_button">Submit</button>
 </body>
 
-<script>
-	const popupReplicant = nodecg.Replicant('popup');
-
-	document.getElementById("submit_button").onclick = () => {
-		popupReplicant.value = {
-                    'title': document.getElementById("headline").value,
-                    'text': document.getElementById("contents").value,
-                    'delay': document.getElementById("delay").value,
-                    'lower': document.getElementById("lower").checked
-                };
-	};
-</script>
+<script src="assets/popup.js"></script>
 </html>

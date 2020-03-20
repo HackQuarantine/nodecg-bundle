@@ -44,5 +44,3 @@ function animToDur(element, target, duration) {
     }
     setTimeout(function(){setText(start, target, element, 1)}, duration);
 }
-
-//setTimeout(function(){startAnim(true)},delay1);

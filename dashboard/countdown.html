@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <input type="checkbox" id="countdown_active" name="countdown_active">
-    <label for="countdown_active"> Countdown Active (holding view only)</label>
-    <br />
     <input id="countdown_date" type="date"></input>
     <input id="countdown_time" type="time"></input>
     <br />
     <input id="countdown_text" type="text" placeholder="Until Hacking Ends"></input>
     <br />
     <button id="countdown_submit">Submit</button>
+    <br />
+    <br />
+    <label>Countdown:</label>
+    <input type="checkbox" id="countdown_active" name="countdown_active" checked>
+    <label for="countdown_active"> Active (holding view only)</label>
 </body>
 
-<script>
-    const countdown_replicant = nodecg.Replicant("countdown");
-
-    document.getElementById("countdown_submit").onclick = () => {
-        countdown_replicant.value = {
-            'active': document.getElementById("countdown_active").checked,
-            'date': document.getElementById("countdown_date").value,
-            'time': document.getElementById("countdown_time").value,
-            'text': document.getElementById("countdown_text").value
-        };
-    }
-
-    countdown_replicant.on('change', (newValue, oldValue) => {
-        if (typeof(newValue) === "object") {
-            document.getElementById("countdown_date").value = newValue.date;
-            document.getElementById("countdown_time").value = newValue.time;
-            document.getElementById("countdown_active").checked = newValue.active;
-            document.getElementById("countdown_text").value = newValue.text;
-        }
-    });
-</script>
+<script src="assets/countdown.js"></script>
 </html>

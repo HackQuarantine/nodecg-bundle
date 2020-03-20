@@ -111,3 +111,27 @@
 	  new Rain({ target: main, row: 50 });
 	}
 
+
+if (typeof nodecg !== 'undefined') {
+    const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
+
+    countdown_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            countdown_endtime = newValue.date + "T" + newValue.time;
+            clock(newValue.active);
+            document.getElementById("clock-text").innerHTML = newValue.text;
+        }
+    });
+
+    const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
+
+    on_now_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object") {
+            countdown_endtime = newValue.date + "T" + newValue.time;
+            document.getElementById("event-name").innerHTML = newValue.name;
+            document.getElementById("event-person").innerHTML = newValue.person;
+            document.getElementById("event-time").innerHTML = format_date(newValue.date, newValue.time);
+        }
+    });
+}
+initialize_countdown();
