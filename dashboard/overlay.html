@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
     <script src="assets/apikey.js"></script>
     <script src="assets/calendar.js"></script>
 </head>
@@ -29,9 +30,9 @@
             <input class="up_next_person" type="text" placeholder="Person"></input>
             <input class="up_next_date" type="date"></input>
             <input class="up_next_time" type="time"></input>
-            <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
-            <button class="up_next_up" onclick="move_up(this);">Up</input>
-            <button class="up_next_down" onclick="move_down(this);">Down</input>
+            <button class="up_next_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
+            <button class="up_next_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
+            <button class="up_next_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
         </div>
     </div>
     <button id="up_next_add">Add Row</button>
@@ -45,9 +46,9 @@
         <div class="message">
             <input class="message_image" type="text" placeholder="Image URL"></input>
             <input class="message_text" type="text" placeholder="Message"></input>
-            <button class="message_remove" onclick="remove_row(this);">Remove Row</input>
-            <button class="message_up" onclick="move_up(this);">Up</input>
-            <button class="message_down" onclick="move_down(this);">Down</input>
+            <button class="message_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
+            <button class="message_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
+            <button class="message_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
         </div>
     </div>
     <button id="message_add">Add Row</button>
@@ -86,9 +87,9 @@
         <input class="up_next_person" type="text" placeholder="Person" value="%s"></input>
         <input class="up_next_date" type="date" value="%s"></input>
         <input class="up_next_time" type="time" value="%s"></input>
-        <button class="up_next_remove" onclick="remove_row(this);">Remove Row</input>
-        <button class="up_next_up" onclick="move_up(this);">Up</input>
-        <button class="up_next_down" onclick="move_down(this);">Down</input>`
+        <button class="up_next_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
+        <button class="up_next_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
+        <button class="up_next_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>`
 
     const add_row = document.getElementById("up_next_add");
     add_row.addEventListener("click", function() {
@@ -101,9 +102,9 @@
     const message_row_html = `
         <input class="message_image" type="text" placeholder="Image URL" value="%s"></input>
         <input class="message_text" type="text" placeholder="Message" value="%s"></input>
-        <button class="message_remove" onclick="remove_row(this);">Remove Row</input>
-        <button class="message_up" onclick="move_up(this);">Up</input>
-        <button class="message_down" onclick="move_down(this);">Down</input>`
+        <button class="message_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
+        <button class="message_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
+        <button class="message_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>`
 
     const message_add_row = document.getElementById("message_add");
     message_add_row.addEventListener("click", function() {
