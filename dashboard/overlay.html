@@ -5,6 +5,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
     <script src="assets/apikey.js"></script>
     <script src="assets/calendar.js"></script>
+    <link rel="stylesheet" href="assets/overlay.css" />
 </head>
 <body>
     <button id="calendar_fill">Fill From Calendar</button>
@@ -33,6 +34,7 @@
             <button class="up_next_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
             <button class="up_next_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
             <button class="up_next_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
+            <button class="up_next_pop" onclick="pop_on_now(this);">Pop</input>
         </div>
     </div>
     <button id="up_next_add">Add Row</button>
@@ -82,6 +84,15 @@
         }
     }
 
+    function pop_on_now(button) {
+        document.getElementById("on_now_name").value = button.parentNode.getElementsByClassName("up_next_name")[0].value;
+        document.getElementById("on_now_person").value = button.parentNode.getElementsByClassName("up_next_person")[0].value;
+        document.getElementById("on_now_date").value = button.parentNode.getElementsByClassName("up_next_date")[0].value;
+        document.getElementById("on_now_time").value = button.parentNode.getElementsByClassName("up_next_time")[0].value;
+
+        remove_row(button)
+    }
+
     const row_html = `
         <input class="up_next_name" type="text" placeholder="Event Name" value="%s"></input>
         <input class="up_next_person" type="text" placeholder="Person" value="%s"></input>
@@ -89,7 +100,8 @@
         <input class="up_next_time" type="time" value="%s"></input>
         <button class="up_next_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
         <button class="up_next_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
-        <button class="up_next_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>`
+        <button class="up_next_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
+        <button class="up_next_pop" onclick="pop_on_now(this);">Pop</input>`
 
     const add_row = document.getElementById("up_next_add");
     add_row.addEventListener("click", function() {
