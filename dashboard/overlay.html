@@ -2,8 +2,15 @@
 <html>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
+    <script src="assets/apikey.js"></script>
+    <script src="assets/calendar.js"></script>
 </head>
 <body>
+    <button id="calendar_fill">Fill From Calendar</button>
+
+    <br />
+    <br />
+
     <label>On now:</label>
     <br />
     <input id="on_now_name" type="text" placeholder="Event Name"></input>
@@ -208,5 +215,13 @@
             document.getElementById("sidebar_active").checked = newValue;
         }
     });
+
+    // *****************
+    // * CALENDAR FILL *
+    // *****************
+
+    document.getElementById("calendar_fill").onclick = () => {
+        request_events();
+    }
 </script>
 </html>
