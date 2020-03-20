@@ -71,6 +71,8 @@
     const sidebar_replicant = nodecg.Replicant("sidebar");
 
     function message_push(button, now) {
+        message_submit();
+
         element = button.parentNode;
         console.log(element);
 
@@ -117,7 +119,7 @@
         up_next_replicant.value = events;
     }
 
-    document.getElementById("message_submit").onclick = () => {
+    function message_submit() {
         messages = [];
         elements = document.getElementById("messages").getElementsByClassName("message");
         for (var i = 0; i < elements.length; i++) {
@@ -128,6 +130,8 @@
         }
         messages_replicant.value = messages;
     }
+
+    document.getElementById("message_submit").onclick = message_submit;
 
     document.getElementById("sidebar_active").onclick = () => {
         sidebar_replicant.value = document.getElementById("sidebar_active").checked;
