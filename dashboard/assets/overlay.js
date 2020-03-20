@@ -48,7 +48,9 @@
         <input class="message_text" type="text" placeholder="Message" value="%s"></input>
         <button class="message_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
         <button class="message_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
-        <button class="message_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>`
+        <button class="message_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
+        <button class="message_now" onclick="message_push(this, true);">Now</input>
+        <button class="message_next" onclick="message_push(this, false);">Next</input>`
 
     const message_add_row = document.getElementById("message_add");
     message_add_row.addEventListener("click", function() {
@@ -65,7 +67,32 @@
     const on_now_replicant = nodecg.Replicant("on_now");
     const up_next_replicant = nodecg.Replicant("up_next");
     const messages_replicant = nodecg.Replicant("messages");
+    const messages_push_replicant = nodecg.Replicant("messages_push");
     const sidebar_replicant = nodecg.Replicant("sidebar");
+
+    function message_push(button, now) {
+        element = button.parentNode;
+        console.log(element);
+
+        var i = 0;
+        while (element.previousSibling.classList !== undefined && element.previousSibling.classList.contains("message")) {
+            console.log(element.previousSibling);
+            element = element.previousSibling;
+            i++;
+        }
+
+        messages_push_replicant.value = {
+            'index': i,
+            'now': now,
+            'new': true
+        }
+
+        setTimeout(function() {
+            messages_push_replicant.value = {
+                'new': false
+            };
+        }, 500);
+    }
 
     document.getElementById("on_now_submit").onclick = () => {
         on_now_replicant.value = {

@@ -2,6 +2,7 @@ if (typeof nodecg !== 'undefined') {
     const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
     const up_next_replicant = nodecg.Replicant('up_next', 'hackproductions-nodecg-bundle');
     const messages_replicant = nodecg.Replicant('messages', 'hackproductions-nodecg-bundle');
+    const messages_push_replicant = nodecg.Replicant('messages_push', 'hackproductions-nodecg-bundle');
     const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
     const sidebar_replicant = nodecg.Replicant('sidebar', 'hackproductions-nodecg-bundle');
 
@@ -36,6 +37,15 @@ if (typeof nodecg !== 'undefined') {
         }
     });
     cycle_start();
+
+    messages_push_replicant.on('change', (newValue, oldValue) => {
+        if (typeof(newValue) === "object" && newValue.new) {
+            cycle_index = newValue.index - 1;
+            if (newValue.now) {
+                cycle_next();
+            }
+        }
+    });
 
     sidebar_replicant.on('change', (newValue, oldValue) => {
         if (typeof(newValue) === "boolean") {

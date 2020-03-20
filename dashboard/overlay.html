@@ -51,6 +51,8 @@
             <button class="message_remove" onclick="remove_row(this);"><i class="fas fa-times"></i></input>
             <button class="message_up" onclick="move_up(this);"><i class="fas fa-arrow-up"></i></input>
             <button class="message_down" onclick="move_down(this);"><i class="fas fa-arrow-down"></i></input>
+            <button class="message_now" onclick="message_push(this, true);">Now</input>
+            <button class="message_next" onclick="message_push(this, false);">Next</input>
         </div>
     </div>
     <button id="message_add">Add Row</button>

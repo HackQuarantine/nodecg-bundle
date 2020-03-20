@@ -10,7 +10,7 @@
 ];*/
 var cycle_elements = [];
 
-var cycle_index = 0;
+var cycle_index = -1;
 var cycle_delay = 60*1000;
 
 function cycle_next() {
@@ -23,4 +23,5 @@ function cycle_next() {
 
 function cycle_start() {
     setInterval(cycle_next, cycle_delay);
+    setTimeout(cycle_next, 2000);
 }
