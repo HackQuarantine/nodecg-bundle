@@ -21,9 +21,14 @@ function format_events(events) {
     for (var i = 0; i < items.length; i++) {
         e = {
             'name': items[i].summary,
-            'person': items[i].location !== undefined ? items[i].location : "",
             'start': new Date(items[i].start.dateTime),
             'end': new Date(items[i].end.dateTime),
+        }
+        if (is_json(items[i].description)) {
+            description = JSON.parse(items[i].description)
+            e.person = description.organiser;
+        } else {
+            e.person = "";
         }
         d = e.start;
         month = ('0' + (d.getUTCMonth() + 1)).slice(-2);
