@@ -1,7 +1,7 @@
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 function format_date(date, time) {
-    return months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time;
+    return months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time.slice(0,5);
 }
 
 function on_now(event_details) {
@@ -21,6 +21,10 @@ function on_now(event_details) {
         box_text = sprintf(box_html, event_name, person, time);
         document.getElementById("on_now").innerHTML += box_text;
         box = document.getElementById("on_now").getElementsByClassName("box")[0];
+
+        if (person === "") {
+            box.getElementsByClassName("person")[0].remove();
+        }
 
         box.classList.remove("hidden");
         box.classList.add("animated");
@@ -59,6 +63,10 @@ function up_next(events) {
 
         boxes_new = document.getElementById("up_next").getElementsByClassName("box");
         for (var i = 0; i < boxes_new.length; i++) {
+            if (events[i].person === "") {
+                boxes_new[i].getElementsByClassName("person")[0].remove();
+            }
+
             setTimeout(function(box) {
                 box.classList.remove("hidden");
                 box.classList.add("animated");

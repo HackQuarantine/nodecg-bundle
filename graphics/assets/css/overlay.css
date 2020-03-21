@@ -12,8 +12,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 12%;
-    height: calc(100% - 12%);
+    width: 12.5%;
+    height: calc(100% - 12.5%);
     overflow: hidden;
     background-color: #0e1428;
     color: white;
@@ -23,8 +23,8 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: calc(100% - 12%);
-    height: 12%;
+    width: calc(100% - 12.5%);
+    height: 12.5%;
     overflow: hidden;
     background-color: #0e1428;
     color: white;
@@ -34,8 +34,8 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 12%;
-    height: 12%;
+    width: 12.5%;
+    height: 12.5%;
     overflow: hidden;
     background-color: #0e1428;
 }
@@ -67,7 +67,8 @@ body {
 }
 
 #on_now, #up_next {
-    padding: 0.3em;
+    /*padding: 0.3em;*/
+    padding: 7px;
 }
 
 #on_now .title, #up_next .title {
@@ -76,19 +77,22 @@ body {
 
 .box {
     background-color: gray;
-    margin-top: 0.3em;
+    box-shadow: 4px 4px 0 0 white;
+    margin-top: 0.4em;
     padding-left: 0.3em;
-    padding-bottom: 1em;
+    padding-bottom: 0.3em;
+}
+
+.box .name {
+    padding: 0px 1px;
 }
 
 .box_lower {
     position: relative;
     width: 100%;
-    height: 0.8em;
 }
 
 .box_lower .time {
-
     font-size: 0.6em;
 }
 
