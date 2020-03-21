@@ -1,7 +1,7 @@
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 function format_date(date, time) {
-    return months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time.slice(0,5);
+    return months[Number(date.slice(5,7))-1] + " " + date.slice(8,10) + " " + time.slice(0,5) + " UTC";
 }
 
 function on_now(event_details) {

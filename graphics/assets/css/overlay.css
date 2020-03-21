@@ -67,8 +67,8 @@ body {
 }
 
 #on_now, #up_next {
-    /*padding: 0.3em;*/
     padding: 7px;
+    padding-right: 9px;
 }
 
 #on_now .title, #up_next .title {
@@ -78,13 +78,14 @@ body {
 .box {
     background-color: gray;
     box-shadow: 4px 4px 0 0 white;
-    margin-top: 0.4em;
+    margin-top: 8px;
     padding-left: 0.3em;
     padding-bottom: 0.3em;
 }
 
 .box .name {
     padding: 0px 1px;
+    font-weight: bold;
 }
 
 .box_lower {
