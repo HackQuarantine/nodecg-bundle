@@ -5,7 +5,11 @@
 
     <link rel="stylesheet" href="assets/css/popup.css">
     <script src="assets/js/mutate.js"></script>
+    <script src="assets/js/apikey.js"></script>
+    <script src="assets/js/now-playing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js" integrity="sha256-6rSEKvygjVuveLg6nGaMMD+9XTlJrDHGq8eDuxHlFyA=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 </head>
 <body>
     <div id="popup">
@@ -17,43 +21,21 @@
             <span id="contents"></span>
         </div>
     </div>
+
+    <div id="now-playing">
+        <div id="note-icon">
+            <i class="fas fa-music"></i>
+        </div>
+        <div id="now-playing-text">
+            <div id="now-playing-song"></div>
+            <div id="now-playing-artist"></div>
+        </div>
+        <div id="now-playing-align">
+            <div id="now-playing-align-song"></div>
+            <div id="now-playing-align-artist"></div>
+        </div>
+    </div>
 </body>
 
-<script>
-    function reveal_popup(headline, contents, delay, lower) {
-        if (lower) {
-            document.getElementById("popup").classList.add("lower");
-            setTimeout(function() {
-                document.getElementById("popup").classList.remove("lower");
-            }, Number(delay)+4000);
-        }
-
-        document.getElementById("popup").classList.add("show");
-        animToDur(document.getElementById("headline"), headline, 2000);
-        animToDur(document.getElementById("contents"), contents, 2000);
-        setTimeout(function() { 
-            animToDur(document.getElementById("headline"), "", 2000);
-            animToDur(document.getElementById("contents"), "", 2000);
-            setTimeout(function() {
-                document.getElementById("popup").classList.remove("show");
-            }, 1000);
-        }, Number(delay)+2000);
-    }
-
-    setTimeout(function() {
-        if (typeof nodecg !== 'undefined') {
-            const popupReplicant = nodecg.Replicant('popup', 'hackproductions-nodecg-bundle');
-
-            // Change will be called when the Replicant loads too, so we can use it to set the initial value.
-            popupReplicant.on('change', (newValue, oldValue) => {      
-                if (typeof(newValue) === "object") {
-                    reveal_popup(newValue.title, newValue.text, newValue.delay, newValue.lower);
-                }
-            });
-        } else {
-            reveal_popup("This is the title", "This is the subtitle", 7000);
-        }
-    }, 100);
-
-</script>
+<script src="assets/js/popup.js"></script>
 </html>

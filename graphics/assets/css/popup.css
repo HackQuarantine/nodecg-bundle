@@ -58,3 +58,58 @@ body {
     min-height: 31px;
     font-size: 1.5em;
 }
+
+
+
+#now-playing {
+    overflow: hidden;
+    position: absolute;
+    
+    top: 80%;
+    transition: right 0.6s cubic-bezier(.71,-0.3,.21,1.32);
+    background-color: #0e1428;
+    color: white;
+    box-shadow: inset 0px 0px 30px 10px #243d8e;
+}
+
+#now-playing:not(.show) {
+    right: -50%;
+}
+
+#now-playing.show {
+    right: -100px;
+}
+
+#note-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.6em;
+    padding: 0.9em;
+}
+
+#now-playing-text {
+    position: absolute;
+    left: 4.5em;
+    top: 0.2em;
+}
+
+#now-playing-align {
+    padding-left: 4.5em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-right: 0.5em;
+    color: #ffffff00;
+}
+
+#now-playing-song, #now-playing-align-song {
+    font-size: 2em;
+}
+
+#now-playing-artist, #now-playing-align-artist {
+    font-size: 1.5em;
+}
+
+#now-playing-align {
+    margin-right: 150px;
+}
