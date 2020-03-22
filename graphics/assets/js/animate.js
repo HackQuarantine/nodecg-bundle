@@ -86,7 +86,11 @@ function stats_image(image) {
     elem.classList.add("fadeOutDown");
     setTimeout(function(elem, image) {
         elem.children[0].src = image;
-        elem.classList.remove("hidden");
+        if (image === "") {
+            elem.classList.add("hidden");
+        } else {
+            elem.classList.remove("hidden");
+        }
         elem.classList.remove("fadeOutDown");
         elem.classList.add("fadeInUp");
         setTimeout(function(elem) {

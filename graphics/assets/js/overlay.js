@@ -33,7 +33,11 @@ if (typeof nodecg !== 'undefined') {
 
     messages_replicant.on('change', (newValue, oldValue) => {
         if (typeof(newValue) === "object") {
+            do_next = cycle_elements.length == 0 | newValue.length == 0;
             cycle_elements = newValue;
+            if (do_next) {
+                cycle_next();
+            }
         }
     });
     cycle_start();

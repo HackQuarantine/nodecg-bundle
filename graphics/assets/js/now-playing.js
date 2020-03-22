@@ -20,7 +20,7 @@ function get_lastfm() {
     fetch(lastfm_data.baseURL + "?method=" + lastfm_data.method + "&user=" + lastfm_data.user + "&api_key=" + lastfm_data.api_key + lastfm_data.additional).then(function(response) {
         return response.json();
     }).then(function(data) {
-        set_now_playing(data.recenttracks.track[0])
+        set_now_playing(data.recenttracks.track[0]);
     });
 }
 

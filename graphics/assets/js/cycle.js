@@ -18,6 +18,9 @@ function cycle_next() {
         cycle_index = (cycle_index + 1) % cycle_elements.length;
         stats_image(cycle_elements[cycle_index].image);
         animTo(document.getElementById("stats_text"), cycle_elements[cycle_index].text);
+    } else {
+        stats_image("");
+        animTo(document.getElementById("stats_text"), "");
     }
 }
 
