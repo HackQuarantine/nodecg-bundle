@@ -7,12 +7,18 @@ const lastfm_data = {
 };
 
 var now_playing = null;
+var now_playing_waiting = 0;
 
 function set_now_playing(val) {
     if (now_playing === null || now_playing.name !== val.name || now_playing.artist['#text'] !== val.artist['#text']) {
         now_playing = val;
-
-        show_now_playing(now_playing.name, now_playing.artist['#text'], 5000);
+        now_playing_waiting += 1;
+        setTimeout(function(val) {
+            show_now_playing(val.name, val.artist['#text'], 5000);
+            setTimeout(function() {
+                now_playing_waiting -= 1;
+            }, 8000);
+        }.bind(self, val), (now_playing_waiting-1)*8000);
     }
 }
 
