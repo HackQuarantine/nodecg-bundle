@@ -8,3 +8,16 @@ document.getElementById("submit_button").onclick = () => {
         'lower': document.getElementById("lower").checked
     };
 };
+
+const nowPlayingReplicant = nodecg.Replicant("now-playing");
+
+document.getElementById("now-playing").onclick = () => {
+    nowPlayingReplicant.value = document.getElementById("now-playing").checked;
+}
+
+nowPlayingReplicant.on('change', (newValue, oldValue) => {
+    if (typeof(newValue) === "boolean") {
+        document.getElementById("now-playing").checked = newValue;
+    }
+});
+

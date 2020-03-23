@@ -30,7 +30,28 @@ function get_lastfm() {
     });
 }
 
-// Get the new one.
-get_lastfm();
-// Start the countdown.
-setInterval(get_lastfm, 5 * 1000);
+var now_playing_interval = null;
+
+setTimeout(function() {
+    if (typeof nodecg !== 'undefined') {
+        const nowPlayingReplicant = nodecg.Replicant('now-playing', 'hackproductions-nodecg-bundle');
+
+        // Change will be called when the Replicant loads too, so we can use it to set the initial value.
+        nowPlayingReplicant.on('change', (newValue, oldValue) => {
+            if (typeof(newValue) === "boolean" && newValue) {
+                if (now_playing_interval === null) {
+                    get_lastfm();
+                    now_playing_interval = setInterval(get_lastfm, 5 * 1000);
+                }
+            } else {
+                clearInterval(now_playing_interval);
+                now_playing_interval = null;
+            }
+        });
+    } else {
+        // Get the new one.
+        get_lastfm();
+        // Start the countdown.
+        now_playing_interval = setInterval(get_lastfm, 5 * 1000);
+    }
+}, 100);
