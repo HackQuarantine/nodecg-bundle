@@ -1,13 +1,3 @@
-/*var cycle_elements = [
-    {
-        'image': 'assets/logo.png',
-        'text': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu purus iaculis, porta eros porta, maximus purus."
-    },
-    {
-        'image': 'assets/logo_small.png',
-        'text': "Bottom Text"
-    }
-];*/
 var cycle_elements = [];
 
 var cycle_index = -1;
