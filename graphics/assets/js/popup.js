@@ -37,13 +37,15 @@ function reveal_popup(headline, contents, delay, lower) {
     }, Number(delay)+2000);
 }
 
+var show_popup = false;
+
 setTimeout(function() {
     if (typeof nodecg !== 'undefined') {
         const popupReplicant = nodecg.Replicant('popup', 'hackproductions-nodecg-bundle');
 
         // Change will be called when the Replicant loads too, so we can use it to set the initial value.
         popupReplicant.on('change', (newValue, oldValue) => {      
-            if (typeof(newValue) === "object") {
+            if (show_popup && typeof(newValue) === "object") {
                 reveal_popup(newValue.title, newValue.text, newValue.delay, newValue.lower);
             }
         });
@@ -51,3 +53,7 @@ setTimeout(function() {
         reveal_popup("This is the title", "This is the subtitle", 7000);
     }
 }, 100);
+
+setTimeout(function() {
+    show_popup = true;
+}, 1000);
