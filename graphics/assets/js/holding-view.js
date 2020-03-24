@@ -127,11 +127,10 @@ if (typeof nodecg !== 'undefined') {
 
     on_now_replicant.on('change', (newValue, oldValue) => {
         if (typeof(newValue) === "object") {
-            countdown_endtime = newValue.date + "T" + newValue.time;
+            countdown_endtime_event = newValue.date + "T" + newValue.time;
             document.getElementById("event-name").innerHTML = newValue.name;
             document.getElementById("event-person").innerHTML = newValue.person;
             document.getElementById("event-time").innerHTML = format_date(newValue.date, newValue.time);
         }
     });
 }
-initialize_countdown();

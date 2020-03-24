@@ -1,14 +1,17 @@
 var countdown_endtime = null;
+var countdown_endtime_event = null;
+var is_event = null;
 
-function initialize_countdown() {
+function initialize_countdown(is_event) {
     var days = document.getElementById("clock-d")
     var hours = document.getElementById("clock-h")
     var minutes = document.getElementById("clock-m")
     var seconds = document.getElementById("clock-s")
 
     function do_countdown() {
-        if (countdown_endtime !== null) {
-            var t = get_time_remaining(countdown_endtime);
+        endtime = is_event ? countdown_endtime_event : countdown_endtime;
+        if (endtime !== null) {
+            var t = get_time_remaining(endtime);
             days.innerHTML = ('0' + t.days).slice(-2);
             hours.innerHTML = ('0' + t.hours).slice(-2);
             minutes.innerHTML = ('0' + t.minutes).slice(-2);
