@@ -44,6 +44,22 @@ body {
     background-color: #0e1428;
 }
 
+#bottom_left.thin {
+    height: 8%;
+    width: 8%;
+}
+
+#bottom.thin {
+    height: 8%;
+    width: calc(100% - 8%);
+}
+
+#bottom.thin .clock {
+    font-size: 3.5vh;
+    padding-top: 1.4vh;
+    padding-left: 5%;
+}
+
 .logo {
     max-height: 100%;
     max-width: 100%;
