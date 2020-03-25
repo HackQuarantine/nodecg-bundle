@@ -37,21 +37,55 @@ function reveal_popup(headline, contents, delay, lower) {
     }, Number(delay)+2000);
 }
 
+function reveal_popup_countdown(headline, endtime) {
+    countdown_endtime = endtime;
+    setTimeout(function() {
+        document.getElementById("popup-countdown").classList.add("show");
+        animToDur(document.getElementById("headline-countdown"), headline, 2000);
+    }, 1000);
+}
+
+function hide_popup_countdown() {
+    animToDur(document.getElementById("headline-countdown"), "", 2000);
+    setTimeout(function() {
+        document.getElementById("popup-countdown").classList.remove("show");
+    }, 1000);
+}
+
 var show_popup = false;
+var popup_timeout = null;
 
 setTimeout(function() {
     if (typeof nodecg !== 'undefined') {
         const popupReplicant = nodecg.Replicant('popup', 'hackproductions-nodecg-bundle');
+        const popupCountdownReplicant = nodecg.Replicant('popup-countdown', 'hackproductions-nodecg-bundle');
 
-        // Change will be called when the Replicant loads too, so we can use it to set the initial value.
         popupReplicant.on('change', (newValue, oldValue) => {      
             if (show_popup && typeof(newValue) === "object") {
                 reveal_popup(newValue.title, newValue.text, newValue.delay, newValue.lower);
             }
         });
+
+        popupCountdownReplicant.on('change', (newValue, oldValue) => {
+            if (show_popup && typeof(newValue) === "object") {
+                clearTimeout(popup_timeout);
+                if (!newValue.cancel) {
+                    endtime = newValue.date + "T" + newValue.time;
+                    millis = Math.max(Date.parse(endtime) - Date.parse(new Date()), 0);
+                    if (millis > 0) {
+                        reveal_popup_countdown(newValue.title, endtime);
+                        popup_timeout = setTimeout(hide_popup_countdown, millis);
+                    }
+                } else {
+                    hide_popup_countdown();
+                }
+            }
+        });
     } else {
         reveal_popup("This is the title", "This is the subtitle", 7000);
     }
+    countdown_endtime = "2000-01-01T12:00";
+    initialize_countdown(false);
 }, 100);
 
 setTimeout(function() {

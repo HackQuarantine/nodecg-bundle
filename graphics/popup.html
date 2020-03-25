@@ -4,6 +4,7 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="assets/css/popup.css">
+    <script src="assets/js/clock.js"></script>
     <script src="assets/js/mutate.js"></script>
     <script src="assets/js/apikey.js"></script>
     <script src="assets/js/now-playing.js"></script>
@@ -13,12 +14,22 @@
 </head>
 <body>
     <div id="popup">
-        <div id="headline-box">
+        <div class="headline-box">
             <h1 id="headline"></h1>
         </div>
         <div class="divider"></div>
-        <div id="contents-box">
+        <div class="contents-box">
             <span id="contents"></span>
+        </div>
+    </div>
+
+    <div id="popup-countdown">
+        <div class="headline-box">
+            <h1 id="headline-countdown"></h1>
+        </div>
+        <div class="divider"></div>
+        <div id="contents-box-countdown" class="contents-box">
+            <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span>
         </div>
     </div>
 

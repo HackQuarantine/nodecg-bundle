@@ -5,11 +5,10 @@ body {
     overflow: hidden;
 }
 
-#popup {
+#popup, #popup-countdown {
     overflow: hidden;
     position: absolute;
     
-    top: 30%;
     transition: left 0.6s cubic-bezier(.71,-0.3,.21,1.32);
     width: 40%;
     background-color: #0e1428;
@@ -17,11 +16,19 @@ body {
     box-shadow: inset 0px 0px 30px 10px #243d8e;
 }
 
-#popup:not(.show) {
+#popup {
+    top: 30%;
+}
+
+#popup-countdown {
+    top: 55%;
+}
+
+#popup:not(.show), #popup-countdown:not(.show) {
     left: 105%;
 }
 
-#popup.show {
+#popup.show, #popup-countdown.show {
     left: 30%;
 }
 
@@ -46,17 +53,24 @@ body {
     box-shadow: 0px 0px 30px 10px #243d8e;
 }
 
-#headline {
+#headline, #headline-countdown {
     text-transform: uppercase;
     margin: 0.5em;
     min-height: 37px;
     font-size: 1.8em;
 }
 
-#contents-box {
+.contents-box {
     margin: 1em;
     min-height: 31px;
     font-size: 1.5em;
+}
+
+#contents-box-countdown {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 
