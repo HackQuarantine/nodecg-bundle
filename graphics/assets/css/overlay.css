@@ -8,6 +8,10 @@ body {
     display: none !important;
 }
 
+.transparent {
+    opacity: 0;
+}
+
 #left {
     position: absolute;
     top: 0;
@@ -109,6 +113,7 @@ body {
     width: 10%;
     margin: 0.5em;
     display: flex;
+    transition: opacity 0.8s;
 }
 
 #stats_image img {

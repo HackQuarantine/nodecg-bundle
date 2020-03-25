@@ -1,3 +1,5 @@
+var started = false;
+
 if (typeof nodecg !== 'undefined') {
     const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
     const up_next_replicant = nodecg.Replicant('up_next', 'hackproductions-nodecg-bundle');
@@ -35,12 +37,15 @@ if (typeof nodecg !== 'undefined') {
         if (typeof(newValue) === "object") {
             do_next = cycle_elements.length == 0 | newValue.length == 0;
             cycle_elements = newValue;
-            if (do_next) {
+            if (started && do_next) {
                 cycle_next();
             }
         }
     });
     cycle_start();
+    setTimeout(function() {
+        started = true;
+    }, 1000);
 
     messages_push_replicant.on('change', (newValue, oldValue) => {
         if (typeof(newValue) === "object" && newValue.new) {

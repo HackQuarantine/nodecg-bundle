@@ -82,21 +82,22 @@ function up_next(events) {
 
 function stats_image(image) {
     elem = document.getElementById("stats_image");
-    elem.classList.add("animated");
-    elem.classList.add("fadeOutDown");
+    //elem.classList.add("animated");
+    //elem.classList.add("fadeOutDown");
+    elem.classList.add("transparent");
     setTimeout(function(elem, image) {
         elem.children[0].src = image;
         if (image === "") {
-            elem.classList.add("hidden");
+            elem.classList.add("transparent");
         } else {
-            elem.classList.remove("hidden");
+            elem.classList.remove("transparent");
         }
-        elem.classList.remove("fadeOutDown");
+        /*elem.classList.remove("fadeOutDown");
         elem.classList.add("fadeInUp");
         setTimeout(function(elem) {
             elem.classList.remove("animated");
             elem.classList.remove("fadeInUp");
-        }.bind(this, elem), 1000);
+        }.bind(this, elem), 1000);*/
     }.bind(this, elem, image), 1000);
 }
 
