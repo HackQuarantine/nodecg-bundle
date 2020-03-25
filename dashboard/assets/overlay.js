@@ -65,6 +65,7 @@
     // ***************
 
     const on_now_replicant = nodecg.Replicant("on_now");
+    const on_now_holding_view_replicant = nodecg.Replicant("on_now_holding_view");
     const up_next_replicant = nodecg.Replicant("up_next");
     const messages_replicant = nodecg.Replicant("messages");
     const messages_push_replicant = nodecg.Replicant("messages_push");
@@ -96,8 +97,17 @@
         }, 500);
     }
 
-    document.getElementById("on_now_submit").onclick = () => {
+    document.getElementById("on_now_overlay").onclick = () => {
         on_now_replicant.value = {
+            'name': document.getElementById("on_now_name").value,
+            'person': document.getElementById("on_now_person").value,
+            'date': document.getElementById("on_now_date").value,
+            'time': document.getElementById("on_now_time").value
+        };
+    }
+
+    document.getElementById("on_now_holding_view").onclick = () => {
+        on_now_holding_view_replicant.value = {
             'name': document.getElementById("on_now_name").value,
             'person': document.getElementById("on_now_person").value,
             'date': document.getElementById("on_now_date").value,

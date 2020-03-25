@@ -123,9 +123,9 @@ if (typeof nodecg !== 'undefined') {
         }
     });
 
-    const on_now_replicant = nodecg.Replicant('on_now', 'hackproductions-nodecg-bundle');
+    const on_now_holding_view_replicant = nodecg.Replicant('on_now_holding_view', 'hackproductions-nodecg-bundle');
 
-    on_now_replicant.on('change', (newValue, oldValue) => {
+    on_now_holding_view_replicant.on('change', (newValue, oldValue) => {
         if (typeof(newValue) === "object") {
             countdown_endtime_event = newValue.date + "T" + newValue.time;
             document.getElementById("event-name").innerHTML = newValue.name;
