@@ -29,6 +29,17 @@ document.getElementById("countdown-submit").onclick = () => {
         'title': document.getElementById("countdown-headline").value,
         'date': document.getElementById("countdown-date").value,
         'time': document.getElementById("countdown-time").value,
+        'tenseconds': null
+    };
+};
+
+document.getElementById("countdown-tenseconds").onclick = () => {
+    popupCountdownReplicant.value = {
+        'cancel': false,
+        'title': document.getElementById("countdown-headline").value,
+        'date': document.getElementById("countdown-date").value,
+        'time': document.getElementById("countdown-time").value,
+        'tenseconds': true,
     };
 };
 

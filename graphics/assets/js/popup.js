@@ -70,7 +70,14 @@ setTimeout(function() {
             if (show_popup && typeof(newValue) === "object") {
                 clearTimeout(popup_timeout);
                 if (!newValue.cancel) {
-                    endtime = newValue.date + "T" + newValue.time;
+                    var millis;
+                    if (newValue.tenseconds !== null) {
+                        t = new Date();
+                        t.setSeconds(t.getSeconds() + 11);
+                        endtime = t.toString()
+                    } else {
+                        endtime = newValue.date + "T" + newValue.time;
+                    }
                     millis = Math.max(Date.parse(endtime) - Date.parse(new Date()), 0);
                     if (millis > 0) {
                         reveal_popup_countdown(newValue.title, endtime);
