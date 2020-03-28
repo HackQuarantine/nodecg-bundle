@@ -21,10 +21,6 @@ nowPlayingReplicant.on('change', (newValue, oldValue) => {
     }
 });
 
-nodecg.listenFor('obs:transitioning', data => {
-    nowPlayingReplicant.value = data.sceneName.toLowerCase().includes("holding");
-});
-
 const popupCountdownReplicant = nodecg.Replicant('popup-countdown');
 
 document.getElementById("countdown-submit").onclick = () => {

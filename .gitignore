@@ -2,3 +2,4 @@ dashboard/assets/config/*.js
 graphics/assets/config/*.js
 *.swp
 **/.DS_Store
+node_modules

@@ -26,7 +26,11 @@ function format_events(events) {
         }
         if (is_json(items[i].description)) {
             description = JSON.parse(items[i].description)
-            e.person = description.organiser;
+            if (description.organiser) {
+                e.person = description.organiser;
+            } else {
+                e.person = "HackQuarantine Team";
+            }
         } else {
             e.person = "";
         }
@@ -51,7 +55,7 @@ function format_events(events) {
 
 function populate_fields(events) {
     document.getElementById("on_now_name").value = events[0].name;
-    document.getElementById("on_now_person").value = events[0].person;
+    document.getElementById("on_now_person").value = events[0].person
     document.getElementById("on_now_date").value = events[0].date;
     document.getElementById("on_now_time").value = events[0].time;
 

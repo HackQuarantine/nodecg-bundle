@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Scene Information -->
+    Preview Scene: <a id="preview_scene" style="color: green;"></a>
+    <br/>
+    Program Scene: <a id="program_scene" style="color: red;"></a>
+    <br/><br/>
+
+    <!-- Scene Switching -->
+    Holding:
+    <br/>
+    <input type="button" class="preview" data-scene="Base Holding" value="Base Holding"/>
+    <input type="button" class="preview" data-scene="Main Holding" value="Main Holding"/>
+    <br/><br/>
+
+    Streams:
+    <br/>
+    <input type="button" class="preview" data-scene="Overlay - Stream 1" value="Stream 1"/>
+    <input type="button" class="preview" data-scene="Overlay - Stream 2" value="Stream 2"/>
+    <br/><br/>
+
+    <!-- Transitions -->
+    Transitions:
+    <br/>
+    <input type="button" class="transition" data-transition="Fade" value="Fade (300ms)"/>
+    <input type="button" class="transition" data-transition="Stinger" value="Stinger"/>
+    <br/><br/>
+
+    <!-- Core controls -->
+    Controls:
+    <br/>
+    <input type="button" id="recording_toggle" value="Start Recording"/>
+    <br/>
+</body>
+
+<script src="assets/views/obs-control.js"></script>
+</html>

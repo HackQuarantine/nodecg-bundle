@@ -55,6 +55,13 @@
         "headerColor": "#9f9bbd"
       },
       {
+        "name": "obs-control",
+        "title": "OBS Control",
+        "width": 3,
+        "file": "obs-control.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
         "name": "obs",
         "title": "OBS Connection",
         "width": 3,
