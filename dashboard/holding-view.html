@@ -3,16 +3,18 @@
 <body>
     <input id="countdown_date" type="date"></input>
     <input id="countdown_time" type="time"></input>
-    <br />
     <input id="countdown_text" type="text" placeholder="Until Hacking Ends"></input>
     <br />
     <button id="countdown_submit">Submit</button>
     <br />
     <br />
     <label>Countdown:</label>
+    <br/>
     <input type="checkbox" id="countdown_active" name="countdown_active" checked>
-    <label for="countdown_active"> Active (holding view only)</label>
+    <label for="countdown_active"> Base Holding View</label>
+    <input type="checkbox" id="countdown_event_active" name="countdown_event_active" checked>
+    <label for="countdown_event_active"> Event Holding View</label>
 </body>
 
-<script src="assets/countdown.js"></script>
+<script src="assets/views/holding-view.js"></script>
 </html>

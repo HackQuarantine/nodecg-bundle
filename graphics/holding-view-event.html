@@ -24,9 +24,11 @@
                     <div class="headline-date">March 23rd to April 12th</div>
                     <div class="tagline">A global, virtual hackathon</div>
                     <div class="box">
-                        <div class="clock-card">
-                            <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span>
-                        </div>
+                        <div class="clock transparent animated">
+                            <div class="clock-card">
+                                <span id="clock-d">00</span> DAYS, <span id="clock-h">00</span>:<span id="clock-m">00</span>:<span id="clock-s">00</span>
+                            </div>
+                         </div>
                         <div id="event-name"></div>
                         <div class="box_lower">
                             <div class="person">
@@ -49,9 +51,9 @@
     <main></main>
 </body>
 
-<script src="assets/js/clock.js"></script>
-<script src="assets/js/animate.js"></script>
-<script src="assets/js/holding-view.js"></script>
+<script src="assets/shared/clock.js"></script>
+<script src="assets/shared/animate.js"></script>
+<script src="assets/views/holding-view.js"></script>
 <script>
     initialize_countdown(true);
 </script>

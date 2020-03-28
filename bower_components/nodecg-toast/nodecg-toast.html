@@ -1,0 +1,29 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">
+<link rel="import" href="../polymer/lib/utils/import-href.html">
+
+<!--
+`nodecg-toast` is a remote wrapper to a [`paper-toast`](https://elements.polymer-project.org/elements/paper-toast) element present on the Dashboard.
+Each `nodecg-toast` element creates its own `paper-toast`.
+
+    <nodecg-toast text="This text will show up on the bottom left of the dashboard!"></nodecg-toast>
+
+Because every NodeCG panel is an iframe, we cannot attach a `paper-toast` element directly to the panel. Instead,
+we must traverse up past the iframe boundary and attach it directly to the dashboard's `body` tag. `nodecg-toast`
+takes care of this for you and makes it transparent.
+-->
+
+<dom-module id="nodecg-toast">
+	<template>
+		<style>
+			:host {
+				display: none;
+			}
+		</style>
+
+		<slot id="slot"></slot>
+	</template>
+
+	<script src="nodecg-toast.js"></script>
+</dom-module>
+

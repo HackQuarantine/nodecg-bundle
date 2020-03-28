@@ -8,7 +8,6 @@
   },
   "author": "",
   "license": "MIT",
-
   "nodecg": {
     "compatibleRange": ">=0.9",
     "graphics": [
@@ -49,19 +48,23 @@
         "headerColor": "#9f9bbd"
       },
       {
-        "name": "team-lower-thirds",
-        "title": "Team Lower Thirds",
-        "width": 3,
-        "file": "team-lower-thirds.html",
-        "headerColor": "#9f9bbd"
-      },
-      {
         "name": "overlay",
         "title": "Stream Overlay",
         "width": 7,
         "file": "overlay.html",
         "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "obs",
+        "title": "OBS Connection",
+        "width": 3,
+        "file": "obs.html",
+        "headerColor": "#9f9bbd"
       }
     ]
+  },
+  "dependencies": {
+    "bower-npm-resolver": "^0.10.0",
+    "nodecg-utility-obs": "^6.1.5"
   }
 }

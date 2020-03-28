@@ -1,0 +1,50 @@
+{
+  "name": "nodecg-toast",
+  "version": "1.0.0",
+  "homepage": "https://github.com/NodeCGElements/nodecg-toast",
+  "authors": [
+    "Alex Van Camp <email@alexvan.camp>"
+  ],
+  "description": "An implementation of paper-toast designed to work well in NodeCG dashboard panels.",
+  "main": "nodecg-toast.html",
+  "keywords": [
+    "nodecg",
+    "dashboard",
+    "panel",
+    "toast",
+    "polymer",
+    "web-components",
+    "web-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "test-fixture": "PolymerElements/test-fixture#3.0.0-rc.1",
+    "web-component-tester": "Lange/web-component-tester#patch-1",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "dependencies": {
+    "paper-toast": "PolymerElements/paper-toast#1 - 2",
+    "polymer": "Polymer/polymer#^2.0.1"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  },
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "f9df701ad0a5fc7be0ca3c6fb877d69d64816a6e"
+  },
+  "_source": "https://github.com/NodeCGElements/nodecg-toast.git",
+  "_target": "^1.0.0",
+  "_originalSource": "NodeCGElements/nodecg-toast"
+}

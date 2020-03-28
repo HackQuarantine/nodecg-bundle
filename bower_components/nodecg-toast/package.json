@@ -1,0 +1,31 @@
+{
+  "name": "nodecg-toast",
+  "version": "1.0.0",
+  "description": "An implementation of paper-toast designed to work well in NodeCG dashboard panels.",
+  "main": "nodecg-toast.html",
+  "scripts": {
+    "pretest": "eslint **/*.js **/*.html",
+    "test": "wct test/*.html",
+    "serve": "polyserve",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NodeCGElements/nodecg-toast.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NodeCGElements/nodecg-toast/issues"
+  },
+  "homepage": "https://github.com/NodeCGElements/nodecg-toast#readme",
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "eslint": "^3.18.0",
+    "eslint-config-xo": "^0.18.1",
+    "eslint-plugin-html": "^2.0.1",
+    "polyserve": "github:t2ym/polyserve.git#0.19.0-istanbul.1",
+    "web-component-tester": "github:t2ym/web-component-tester#6.0.0-wct6-plugin.4",
+    "web-component-tester-istanbul": "github:t2ym/web-component-tester-istanbul#0.10.1-wct6.11"
+  }
+}

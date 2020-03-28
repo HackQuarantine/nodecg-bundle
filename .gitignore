@@ -1,4 +1,4 @@
-dashboard/assets/apikey.js
-graphics/assets/js/apikey.js
+dashboard/assets/config/*.js
+graphics/assets/config/*.js
 *.swp
 **/.DS_Store
