@@ -60,8 +60,12 @@ if (typeof nodecg !== 'undefined') {
         if (typeof(newValue) === "boolean") {
             if (newValue) {
                 document.getElementById("left").classList.remove("hidden");
+                document.getElementById("bottom_left").classList.remove("thin");
+                document.getElementById("bottom").classList.remove("thin");
             } else {
                 document.getElementById("left").classList.add("hidden");
+                document.getElementById("bottom_left").classList.add("thin");
+                document.getElementById("bottom").classList.add("thin");
             }
         }
     });
