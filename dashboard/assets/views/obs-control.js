@@ -19,7 +19,7 @@ previewScene.on('change', (newValue, oldValue) => {
 })
 
 recordingState.on('change', (newValue, oldValue) => {
-    if (newValue.recording === true) {
+    if (newValue === true) {
         $('#recording_toggle').val("Stop Recording");
     } else {
         $('#recording_toggle').val("Start Recording");
@@ -93,17 +93,17 @@ $(".transition").click(function(){
 });
 
 $("#recording_toggle").click(function(){  
-  if (recordingState.value.recording == false) {
+  if (recordingState.value == false) {
      nodecg.sendMessage('obs:startRecording').then(() => {
          console.log('successfully started recording');
-         recordingState.value = {recording: true};
+         recordingState.value = true;
      }).catch(err => {
          console.error('failed to start recording', err);
      });
   } else {
       nodecg.sendMessage('obs:stopRecording').then(() => {
           console.log('successfully stopped recording');
-          recordingState.value = {recording: false};
+          recordingState.value = false;
       }).catch(err => {
           console.error('failed to stop recording', err);
       });
