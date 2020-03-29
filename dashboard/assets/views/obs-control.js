@@ -29,9 +29,9 @@ recordingState.on('change', (newValue, oldValue) => {
 
 function refresh_clock() {
     var date = new Date()
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var year = date.getFullYear();
+    var month = date.getUTCMonth() + 1;
+    var day = date.getUTCDate();
+    var year = date.getUTCFullYear();
     
     if (month < 10) { 
         month = '0' + month;
@@ -44,9 +44,9 @@ function refresh_clock() {
     var result = day + '-' + month + '-' + year;
 
 
-    var hour = date.getHours();
-    var minute = date.getMinutes();
-    var second = date.getSeconds();
+    var hour = date.getUTCHours();
+    var minute = date.getUTCMinutes();
+    var second = date.getUTCSeconds();
 
     if (hour < 10) {
         hour = '0' + hour;
