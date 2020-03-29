@@ -26,6 +26,48 @@ recordingState.on('change', (newValue, oldValue) => {
     }
 })
 
+
+function refresh_clock() {
+    var date = new Date()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
+    
+    if (month < 10) { 
+        month = '0' + month;
+    }
+
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    var result = day + '-' + month + '-' + year;
+
+
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+
+    if (hour < 10) {
+        hour = '0' + hour;
+    }
+
+    if (minute < 10) {
+        minute = '0' + minute;
+    }
+
+    if (second < 10) {
+        second = '0' + second;
+    }
+
+    result = hour + ':' + minute + ':' + second + ' - ' + result
+
+    document.getElementById('obs-clock').innerHTML = result;
+ }
+
+setInterval(refresh_clock, 1000);
+
+
 //
 //	Controller Logic
 //
