@@ -103,6 +103,7 @@ p {
 
 .transparent {
     opacity: 0;
+    display: none;
 }
 
 #clock-text {
@@ -112,7 +113,7 @@ p {
 
 
 .clock-card {
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: white;
     text-transform: uppercase;
 }

@@ -1,138 +1,68 @@
-	function r(from, to) {
-	  return ~~(Math.random() * (to - from + 1) + from);
-	}
-	function pick() {
-	  return arguments[r(0, arguments.length - 1)];
-	}
-	function getChar() {
-	  return String.fromCharCode(pick(
-	    r(0x3041, 0x30ff),
-	    r(0x2000, 0x206f),
-	    r(0x0020, 0x003f)
-	  ));
-	}
-	function loop(fn, delay) {
-	  let stamp = Date.now();
-	  function _loop() {
-	    if (Date.now() - stamp >= delay) {
-	      fn(); stamp = Date.now();
-	    }
-	    requestAnimationFrame(_loop);
-	  }
-	  requestAnimationFrame(_loop);
-	}
-	class Char {
-	  constructor() {
-	    this.element = document.createElement('span');
-            this.element.classList.add("matrix");
-	    this.mutate();
-	  }
-	  mutate() {
-	    this.element.textContent = getChar();
-	  }
-	}
-	class Trail {
-	  constructor(list = [], options) {
-	    this.list = list;
-	    this.options = Object.assign(
-	      { size: 10, offset: 0 }, options
-	    );
-	    this.body = [];
-	    this.move();
-	  }
-	  traverse(fn) {
-	    this.body.forEach((n, i) => {
-	      let last = (i == this.body.length - 1);
-	      if (n) fn(n, i, last);
-	    });
-	  }
-	  move() {
-	    this.body = [];
-	    let { offset, size } = this.options;
-	    for (let i = 0; i < size; ++i) {
-	      let item = this.list[offset + i - size + 1];
-	      this.body.push(item);
-	    }
-	    this.options.offset = 
-	      (offset + 1) % (this.list.length + size - 1);
-	  }
-	}
-	class Rain {
-	  constructor({ target, row }) {
-	    this.element = document.createElement('p');
-	    this.build(row);
-	    if (target) {
-	      target.appendChild(this.element);
-	    }
-	    this.drop();
-	  }
-	  build(row = 20) {
-	    let root = document.createDocumentFragment();
-	    let chars = [];
-	    for (let i = 0; i < row; ++i) {
-	      let c = new Char();
-	      root.appendChild(c.element);
-	      chars.push(c);
-	      if (Math.random() < .5) {
-	        loop(() => c.mutate(), r(1e3, 5e3));
-	      }
-	    }
-	    this.trail = new Trail(chars, { 
-	      size: r(10, 30), offset: r(0, 100) 
-	    });
-	    this.element.appendChild(root); 
-	  }
-	  drop() {
-	    let trail = this.trail;
-	    let len = trail.body.length;
-	    let delay = r(10, 100);
-	    loop(() => {
-	      trail.move();
-	      trail.traverse((c, i, last) => {
-	        c.element.style = `
-	          color: hsl(136, 100%, ${85 / len * (i + 1)}%)
-	        `;
-	        if (last) {
-	          c.mutate();
-	          c.element.style = `
-	            color: hsl(136, 100%, 85%);
-	            text-shadow:
-	              0 0 .5em #fff,
-	              0 0 .5em currentColor;
-	          `;
-	        }
-	      });
-	    }, delay);
-	  }
-	}
-
-	const main = document.querySelector('main');
-	for (let i = 0; i < 50; ++i) {
-	  new Rain({ target: main, row: 50 });
-	}
-
-
-if (typeof nodecg !== 'undefined') {
-    const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
-
-    countdown_replicant.on('change', (newValue, oldValue) => {
-        if (typeof(newValue) === "object") {
-            countdown_endtime = newValue.date + "T" + newValue.time;
-            console.log(newValue)
-            clock(newValue.active_event);
-        }
-    });
-
-    const on_now_holding_view_replicant = nodecg.Replicant('on_now_holding_view', 'hackproductions-nodecg-bundle');
-
-    on_now_holding_view_replicant.on('change', (newValue, oldValue) => {
-        if (typeof(newValue) === "object") {
-            countdown_endtime_event = newValue.date + "T" + newValue.time;
-            document.getElementById("event-name").innerHTML = newValue.name;
-            document.getElementById("event-person").innerHTML = newValue.person;
-            document.getElementById("event-time").innerHTML = format_date(newValue.date, newValue.time);
-            is_event = true;
-            initialize_countdown();
-        }
-    });
+//
+//  Placeholder data to render if nodecg is not running in the current environment.
+//
+if (typeof nodecg == 'undefined') {
+    // TODO
 }
+
+//
+//  All NodeCG enabled code
+//
+if (typeof nodecg !== 'undefined') {
+    //
+    //  Define our replicant and temporary value storage variable
+    //
+    const countdown_replicant = nodecg.Replicant('countdown', 'hackproductions-nodecg-bundle');
+    let countdown_value = null;
+
+    //
+    //  Get the value for the replicant and store it
+    //
+    countdown_replicant.on('change', (value) => {
+        countdown_value = value;
+    });
+
+    //
+    //  Define our clock elements
+    //
+    const days = document.getElementById("clock-d");
+    const hours = document.getElementById("clock-h");
+    const minutes = document.getElementById("clock-m");
+    const seconds = document.getElementById("clock-s");
+
+    //
+    //  Define our update function
+    //
+    function do_countdown() {
+        if (countdown_value !== null) {
+        	// Handle showing/hiding the view
+        	elem = document.getElementsByClassName("clock")[0];
+        	
+        	if (countdown_value.active) {
+        		elem.classList.add("fadeIn");
+        	    elem.classList.remove("transparent");
+        	    elem.classList.remove("fadeOut");
+        	} else {
+        		// Debounce protection for reloads
+        		if (!elem.classList.contains("transparent")) {
+            	    elem.classList.remove("fadeIn");
+            	    elem.classList.add("fadeOut");
+            	}
+        	}
+
+        	// Handle setting the text
+            var t = get_time_remaining(countdown_value.date + "T" + countdown_value.time);
+            days.innerHTML = ('0' + t.days).slice(-2);
+            hours.innerHTML = ('0' + t.hours).slice(-2);
+            minutes.innerHTML = ('0' + t.minutes).slice(-2);
+            seconds.innerHTML = ('0' + t.seconds).slice(-2);
+        }
+    }
+
+    //
+    //  Kick off the countdown timer
+    //
+    setInterval(do_countdown, 1000);
+    do_countdown();
+}
+

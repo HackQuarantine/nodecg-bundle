@@ -108,10 +108,21 @@
 
     document.getElementById("on_now_holding_view").onclick = () => {
         on_now_holding_view_replicant.value = {
+            'countdown': document.getElementById("countdown_active").checked,
             'name': document.getElementById("on_now_name").value,
             'person': document.getElementById("on_now_person").value,
             'date': document.getElementById("on_now_date").value,
             'time': document.getElementById("on_now_time").value
+        };
+    }
+
+    document.getElementById("countdown_active").onclick = () => {
+         on_now_holding_view_replicant.value = {
+            'countdown': document.getElementById("countdown_active").checked,
+            'name': on_now_holding_view_replicant.value['name'],
+            'person': on_now_holding_view_replicant.value['person'],
+            'date': on_now_holding_view_replicant.value['date'],
+            'time': on_now_holding_view_replicant.value['time']
         };
     }
 
