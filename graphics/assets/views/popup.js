@@ -97,4 +97,4 @@ setTimeout(function() {
 
 setTimeout(function() {
     show_popup = true;
-}, 1000);
+}, 2000);
