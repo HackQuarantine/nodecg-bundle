@@ -131,6 +131,8 @@ if (typeof nodecg !== 'undefined') {
             document.getElementById("event-name").innerHTML = newValue.name;
             document.getElementById("event-person").innerHTML = newValue.person;
             document.getElementById("event-time").innerHTML = format_date(newValue.date, newValue.time);
+
+            initialize_countdown(true);
         }
     });
 }
