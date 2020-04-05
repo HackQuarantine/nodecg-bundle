@@ -92,7 +92,7 @@ setTimeout(function() {
         reveal_popup("This is the title", "This is the subtitle", 7000);
     }
     countdown_endtime = "2000-01-01T12:00";
-    initialize_countdown(false);
+    initialize_countdown();
 }, 100);
 
 setTimeout(function() {

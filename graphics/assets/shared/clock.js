@@ -2,7 +2,7 @@ var countdown_endtime = null;
 var countdown_endtime_event = null;
 var is_event = null;
 
-function initialize_countdown(is_event) {
+function initialize_countdown() {
     var days = document.getElementById("clock-d")
     var hours = document.getElementById("clock-h")
     var minutes = document.getElementById("clock-m")
