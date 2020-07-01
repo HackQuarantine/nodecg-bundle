@@ -12,6 +12,6 @@ https://nodecg.com/docs/installing
 
 `nodecg setup`
 ### Step 2: Install the Bundle
-`git clone -b <client_branch> git@github.com:hackproductions/nodecg-bundle.git bundles/hackproductions-nodecg-bundle`
+`git clone git@github.com:hackquarantine/nodecg-bundle.git bundles/hackquarantine-nodecg-bundle`
 ### Step 3: Run!
 `nodecg start`
